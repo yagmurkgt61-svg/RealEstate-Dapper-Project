@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RealEstate_Dapper_Api/RealEstate_Dapper_Api.csproj" />
+  <Project Path="RealEstate_Dapper_UI/RealEstate_Dapper_UI.csproj" />
+</Solution>
