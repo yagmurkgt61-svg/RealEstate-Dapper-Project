@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yInry0H/I60=",
+  "dgSpecHash": "RonKfcKBGE4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bt.stajyer\\source\\repos\\RealEstate_Dapper_Api\\RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj",
+  "projectFilePath": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bt.stajyer\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\bt.stajyer\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",

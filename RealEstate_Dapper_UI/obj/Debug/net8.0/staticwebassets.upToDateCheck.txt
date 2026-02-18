@@ -244,3 +244,11 @@ wwwroot\starter\index.html
 wwwroot\starter\listing.html
 wwwroot\starter\property-single.html
 wwwroot\starter\starter-license-W3Layouts.txt
+wwwroot\cityimages\budapest.jpg
+wwwroot\cityimages\dresden.jpg
+wwwroot\cityimages\lviv.jpg
+wwwroot\cityimages\lyon.jpg
+wwwroot\cityimages\miami.jpg
+wwwroot\cityimages\montenegro.jpg
+wwwroot\cityimages\rome.jpg
+wwwroot\cityimages\sofia.jpg
