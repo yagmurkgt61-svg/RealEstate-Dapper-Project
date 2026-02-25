@@ -14,12 +14,12 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             _concext = concext;
         }
 
-        public async Task CreateCategory(CreateCategoryDto CategoryDto)
+        public async void CreateCategory(CreateCategoryDto CategoryDto)
         {
             string query = "Insert Into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
             var parameters = new DynamicParameters();
-            parameters.Add("categoryName", CategoryDto.CategoryName);
-            parameters.Add("categoryStatus", true);
+            parameters.Add("@categoryName", CategoryDto.CategoryName);
+            parameters.Add("@categoryStatus", true);
             using (var connection = _concext.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
@@ -52,7 +52,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
         {
             string query = "Select * From Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
-            parameters.Add("categoryID", id);
+            parameters.Add("@categoryID", id);
             using (var connection = _concext.CreateConnection())
             {
                 var values= await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDto>(query,parameters);
@@ -66,9 +66,12 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             var parameters = new DynamicParameters();
             parameters.Add("@categoryName", categoryDto.CategoryName);
             parameters.Add("@categoryStatus", categoryDto.CategoryStatus);
+            parameters.Add("@categoryID", categoryDto.CategoryID);
             using (var connectiont = _concext.CreateConnection()) { 
                 await connectiont.ExecuteAsync(query, parameters);
             }
         }
+
+  
     }
 }
