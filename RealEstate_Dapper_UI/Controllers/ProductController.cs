@@ -14,10 +14,11 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<IActionResult> Index() { 
+        public async Task<IActionResult> Index()
+        {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44319/api/Products/ProductListWithCategory");
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
@@ -26,7 +27,7 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> CreateProduct() 
+        public async Task<IActionResult> CreateProduct()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44319/api/Categories");
@@ -41,6 +42,26 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.v = categoryValues;
             return View();
 
+        }
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44319/api/Products/ProductDealOfTheDayStatusChangeToFalse/"+id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44319/api/Products/ProductDealOfTheDayStatusChangeToTrue/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

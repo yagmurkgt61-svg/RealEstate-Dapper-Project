@@ -107,5 +107,10 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok(_statisticsRepository.ProductCount());
         }
 
+        [HttpGet("AverageRoomCount")]
+        public IActionResult AverageRoomCount()
+        {
+            return Ok(_statisticsRepository.AverageRoomCount());
+        }
     }
 }

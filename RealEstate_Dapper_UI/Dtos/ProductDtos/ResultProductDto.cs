@@ -12,7 +12,8 @@
             public string CoverImage { get; set; }
             public string type { get; set; }
             public string adress { get; set; }
-        }
+        public bool dealOfTheDay { get; set; }
+    }
 
     }
 

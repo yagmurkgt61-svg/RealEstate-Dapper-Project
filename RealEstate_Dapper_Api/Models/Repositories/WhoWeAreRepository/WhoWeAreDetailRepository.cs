@@ -69,7 +69,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
             parameters.Add("@subTitle", updateWhoWeAreDetailDto.SubTitle);
             parameters.Add("@description1", updateWhoWeAreDetailDto.Description1);
             parameters.Add("@description2", updateWhoWeAreDetailDto.Description2);
-            parameters.Add("@whoWeAreDetailID", updateWhoWeAreDetailDto.WhoWeAreDetailId);
+            parameters.Add("@whoWeAreDetailID", updateWhoWeAreDetailDto.WhoWeAreDetailID);
             using (var connectiont = _concext.CreateConnection())
             {
                 await connectiont.ExecuteAsync(query, parameters);
