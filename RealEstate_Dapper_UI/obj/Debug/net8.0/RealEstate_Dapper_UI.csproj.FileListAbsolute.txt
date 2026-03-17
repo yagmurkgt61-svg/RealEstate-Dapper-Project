@@ -535,3 +535,5 @@ C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealE
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.pdb
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.genruntimeconfig.cache
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\ref\RealEstate_Dapper_UI.dll
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\libman.json
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

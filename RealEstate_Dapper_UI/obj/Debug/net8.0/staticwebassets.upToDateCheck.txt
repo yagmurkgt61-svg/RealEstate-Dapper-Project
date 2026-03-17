@@ -191,6 +191,8 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\lib\microsoft\signalr\dist\browser\signalr.js
+wwwroot\lib\microsoft\signalr\dist\browser\signalr.min.js
 wwwroot\starter\about.html
 wwwroot\starter\assets\css\style-starter.css
 wwwroot\starter\assets\fonts\fontawesome-webfont.eot

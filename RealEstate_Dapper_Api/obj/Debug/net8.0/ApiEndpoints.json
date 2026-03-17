@@ -148,6 +148,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ContactsController",
+    "Method": "GetLast4Contact",
+    "RelativePath": "api/Contacts/GetLast4Contact",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RealEstate_Dapper_Api.Controllers.EmployeesController",
     "Method": "EmployeeList",
     "RelativePath": "api/Employees",
@@ -216,6 +226,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.LoginController",
+    "Method": "SignIn",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "RealEstate_Dapper_Api.Dtos.LoginDtos.CreateLoginDto",
         "IsRequired": true
       }
     ],
@@ -313,6 +339,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
+    "Method": "ProductAdvertsListByEmployee",
+    "RelativePath": "api/Products/ProductAdvertsListByEmployee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -599,6 +641,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ToDoListsController",
+    "Method": "EmployeeList",
+    "RelativePath": "api/ToDoLists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.TokenCreateController",
+    "Method": "CreateToken",
+    "RelativePath": "api/TokenCreate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "RealEstate_Dapper_Api.Tools.GetCheckAppUserViewModel",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

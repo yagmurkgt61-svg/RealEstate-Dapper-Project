@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\models\\repositories\\contactrepositories\\contactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\models\\repositories\\contactrepositories\\contactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\areas\\estateagent\\controllers\\myadvertscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\areas\\estateagent\\controllers\\myadvertscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\models\\repositories\\employeerepositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\models\\repositories\\employeerepositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\models\\repositories\\contactrepositories\\icontactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\models\\repositories\\contactrepositories\\icontactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 21,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\EmployeeRepositories\\EmployeeRepository.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Models\\Repositories\\EmployeeRepositories\\EmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\EmployeeRepositories\\EmployeeRepository.cs",
-              "RelativeToolTip": "RealEstate_Dapper_Api\\Models\\Repositories\\EmployeeRepositories\\EmployeeRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwDIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T14:31:21.839Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -124,27 +107,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ContactRepository.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\ContactRepository.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\ContactRepository.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\ContactRepository.cs",
-              "RelativeToolTip": "RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\ContactRepository.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA0wCAAAAAJAAAAAAAAAA==",
+              "Title": "MyAdvertsController.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T13:55:51.024Z",
+              "WhenOpened": "2026-03-11T14:04:55.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IContactRepository.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\IContactRepository.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\IContactRepository.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\IContactRepository.cs",
-              "RelativeToolTip": "RealEstate_Dapper_Api\\Models\\Repositories\\ContactRepositories\\IContactRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T13:55:30.853Z",
+              "WhenOpened": "2026-03-11T08:57:25.239Z",
               "EditorCaption": ""
             }
           ]

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\dtos\\productdtos\\resultlast5productwithcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\dtos\\productdtos\\resultlast5productwithcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\viewcomponents\\dashboard\\_dashboardlast5productcomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\viewcomponents\\dashboard\\_dashboardlast5productcomponentpartial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\services\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\services\\iloginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -115,53 +115,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ResultLast5ProductWithCategoryDto.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Dtos\\ProductDtos\\ResultLast5ProductWithCategoryDto.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Dtos\\ProductDtos\\ResultLast5ProductWithCategoryDto.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Dtos\\ProductDtos\\ResultLast5ProductWithCategoryDto.cs",
-              "RelativeToolTip": "RealEstate_Dapper_Api\\Dtos\\ProductDtos\\ResultLast5ProductWithCategoryDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Program.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Program.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Program.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T13:05:38.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml",
-              "RelativeToolTip": "RealEstate_Dapper_UI\\Views\\Shared\\Components\\_DashboardLast5ProductComponentPartial\\Default.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T10:23:03.931Z",
+              "WhenOpened": "2026-03-11T13:43:31.667Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_DashboardLast5ProductComponentPartial.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\ViewComponents\\Dashboard\\_DashboardLast5ProductComponentPartial.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\ViewComponents\\Dashboard\\_DashboardLast5ProductComponentPartial.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\ViewComponents\\Dashboard\\_DashboardLast5ProductComponentPartial.cs",
-              "RelativeToolTip": "RealEstate_Dapper_UI\\ViewComponents\\Dashboard\\_DashboardLast5ProductComponentPartial.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABYAAABhAAAAAAAAAA==",
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Services\\LoginService.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Services\\LoginService.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Services\\LoginService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T08:57:22.587Z",
+              "WhenOpened": "2026-03-11T12:51:36.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml",
-              "RelativeToolTip": "RealEstate_Dapper_UI\\Views\\Dashboard\\Index.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAYwCYAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T07:38:58.086Z",
+              "Title": "ILoginService.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Services\\ILoginService.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Services\\ILoginService.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Services\\ILoginService.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Services\\ILoginService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T12:49:27.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T08:57:25.239Z",
               "EditorCaption": ""
             }
           ]

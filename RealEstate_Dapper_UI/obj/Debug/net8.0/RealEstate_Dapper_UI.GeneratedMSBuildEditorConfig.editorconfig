@@ -30,6 +30,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Areas/EstateAgent/Views/LayoutEstateAgent/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRXN0YXRlQWdlbnRcVmlld3NcTGF5b3V0RXN0YXRlQWdlbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Areas/EstateAgent/Views/MyAdverts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRXN0YXRlQWdlbnRcVmlld3NcTXlBZHZlcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -84,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/PopularLocation/CreatePopularLocation.cshtml]
@@ -146,12 +158,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluTGF5b3V0U3Bpbm5lckNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_DashboardLast4ContactListComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Rhc2hib2FyZExhc3Q0Q29udGFjdExpc3RDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_DashboardLast5ProductComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Rhc2hib2FyZExhc3Q1UHJvZHVjdENvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_DashboardStatisticsComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Rhc2hib2FyZFN0YXRpc3RpY3NDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_DashboardToDoListComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0Rhc2hib2FyZFRvRG9MaXN0Q29tcG9uZW50UGFydGlhbFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultBottomGridComponentPartial/Default.cshtml]
@@ -198,6 +218,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0RlZmF1bHRXaG9XZUFyZUNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_EstateAgentLayoutSidebarComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0VzdGF0ZUFnZW50TGF5b3V0U2lkZWJhckNvbXBvbmVudFBhcnRpYWxcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Shared/Components/_HeaderViewComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0hlYWRlclZpZXdDb21wb25lbnRQYXJ0aWFsXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -224,6 +248,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Statistics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlzdGljc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/Test/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/bt.stajyer/Documents/GitHub/yagmurkagit/RealEstate-Dapper-Project/RealEstate_Dapper_UI/Views/WhoWeAre/CreateWhoWeAreDetail.cshtml]
