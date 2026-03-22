@@ -13,6 +13,7 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
+        
 
         public async Task<IActionResult> Index()
         {
