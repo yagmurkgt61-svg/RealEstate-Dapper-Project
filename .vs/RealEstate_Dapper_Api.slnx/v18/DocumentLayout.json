@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\areas\\estateagent\\controllers\\myadvertscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\areas\\estateagent\\controllers\\myadvertscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D50D296C-0FA0-B8E2-1042-360DD69164EF}|RealEstate_Dapper_UI\\RealEstate_Dapper_UI.csproj|solutionrelative:realestate_dapper_ui\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|c:\\users\\bt.stajyer\\documents\\github\\yagmurkagit\\realestate-dapper-project\\realestate_dapper_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C569357F-0567-5532-79F1-AD6155592969}|RealEstate_Dapper_Api\\RealEstate_Dapper_Api.csproj|solutionrelative:realestate_dapper_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 21,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,28 +106,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MyAdvertsController.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
-              "RelativeToolTip": "RealEstate_Dapper_UI\\Areas\\EstateAgent\\Controllers\\MyAdvertsController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Program.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Program.cs",
+              "RelativeToolTip": "RealEstate_Dapper_Api\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T14:04:55.238Z",
+              "WhenOpened": "2026-03-24T14:01:33.142Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "RealEstate_Dapper_UI\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "RealEstate_Dapper_Api\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\bt.stajyer\\Documents\\GitHub\\yagmurkagit\\RealEstate-Dapper-Project\\RealEstate_Dapper_Api\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "RealEstate_Dapper_Api\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCEAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T08:57:25.239Z",
+              "WhenOpened": "2026-03-24T13:40:21.332Z",
               "EditorCaption": ""
             }
           ]

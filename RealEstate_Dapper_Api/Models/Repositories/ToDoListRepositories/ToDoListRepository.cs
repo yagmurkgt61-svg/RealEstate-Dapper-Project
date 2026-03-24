@@ -6,10 +6,10 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories
 {
     public class ToDoListRepository : IToDoListRepository
     {
-        private readonly Context _concext;
-        public ToDoListRepository(Context concext)
+        private readonly Context _context;
+        public ToDoListRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
         public void CreateToDoList(CreateToDoListDto toDoListDto)
         {
@@ -24,7 +24,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories
         public async Task<List<ResultToDoListDto>> GetAllToDoListAsync()
         {
             string query = "Select * From ToDoList";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultToDoListDto>(query);
                 return values.ToList();

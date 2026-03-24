@@ -8,11 +8,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
 {
     public class PopularLocationRepository : IPopularLocationRepository
     {
-        private readonly Context _concext;
+        private readonly Context _context;
 
-        public PopularLocationRepository(Context concext)
+        public PopularLocationRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
 
         public async void CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
@@ -21,7 +21,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             var parameters = new DynamicParameters();
             parameters.Add("@cityName", createPopularLocationDto.CityName);
             parameters.Add("@imageUrl", createPopularLocationDto.ImageUrl);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -32,7 +32,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             string query = "Delete From PopularLocation where LocationID=@locationID";
             var parameters = new DynamicParameters();
             parameters.Add("@locationID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -41,7 +41,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
         public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
         {
             string query = "Select * From PopularLocation";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultPopularLocationDto>(query);
                 return values.ToList();
@@ -53,7 +53,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             string query = "Select * From PopularLocation where LocationID=@locationID  ";
             var parameters = new DynamicParameters();
             parameters.Add("@locationID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIDPopularLocationDto>(query, parameters);
                 return values;
@@ -67,7 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             parameters.Add("@cityName", updatePopularLocationDto.CityName);
             parameters.Add("@imageUrl", updatePopularLocationDto.ImageUrl);
             parameters.Add("@locationID", updatePopularLocationDto.LocationID);
-            using (var connectiont = _concext.CreateConnection())
+            using (var connectiont = _context.CreateConnection())
             {
                 await connectiont.ExecuteAsync(query, parameters);
             }

@@ -359,6 +359,118 @@
         }
       }
     },
+    "/api/EstateAgentChart": {
+      "get": {
+        "tags": [
+          "EstateAgentChart"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EstateAgentDashboardStatistic/ProductCountByEmployeeId": {
+      "get": {
+        "tags": [
+          "EstateAgentDashboardStatistic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EstateAgentDashboardStatistic/ProductCountByStatusTrue": {
+      "get": {
+        "tags": [
+          "EstateAgentDashboardStatistic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EstateAgentDashboardStatistic/ProductCountByStatusFalse": {
+      "get": {
+        "tags": [
+          "EstateAgentDashboardStatistic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EstateAgentDashboardStatistic/AllProductCount": {
+      "get": {
+        "tags": [
+          "EstateAgentDashboardStatistic"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EstateAgentLastProducts": {
+      "get": {
+        "tags": [
+          "EstateAgentLastProducts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Login": {
       "post": {
         "tags": [
@@ -383,6 +495,28 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Messages": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -586,7 +720,29 @@
         }
       }
     },
-    "/api/Products/ProductAdvertsListByEmployee": {
+    "/api/Products/ProductAdvertsListByEmployeeByTrue": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Products/ProductAdvertsListByEmployeeByFalse": {
       "get": {
         "tags": [
           "Products"

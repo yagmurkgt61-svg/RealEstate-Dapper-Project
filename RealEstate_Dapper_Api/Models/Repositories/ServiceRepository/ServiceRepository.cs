@@ -7,11 +7,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
 {
     public class ServiceRepository : IServiceRepository
     {
-        private readonly Context _concext;
+        private readonly Context _context;
 
-        public ServiceRepository(Context concext)
+        public ServiceRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
         public async void CreateService(CreateServiceDto createServiceDto)
         {
@@ -19,7 +19,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             var parameters = new DynamicParameters();
             parameters.Add("@serviceName", createServiceDto.ServiceName);
             parameters.Add("@serviceStatus",true);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -30,7 +30,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             string query = "Delete From Service where ServiceID=@ServiceID";
             var parameters = new DynamicParameters();
             parameters.Add("@ServiceID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -40,7 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
         {
 
             string query = "Select * From Service";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultServiceDto>(query);
                 return values.ToList();
@@ -53,7 +53,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             string query = "Select * From Service where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
             parameters.Add("@serviceID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIDServiceDto>(query, parameters);
                 return values;
@@ -67,7 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             parameters.Add("@serviceName", updateServiceDto.ServiceName);
             parameters.Add("@serviceStatus", updateServiceDto.ServiceStatus);
             parameters.Add("@serviceID", updateServiceDto.ServiceID);
-            using (var connectiont = _concext.CreateConnection())
+            using (var connectiont = _context.CreateConnection())
             {
                 await connectiont.ExecuteAsync(query, parameters);
             }

@@ -8,11 +8,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 {
     public class BottomGridRepository : IBottomGridRepository
     {
-        private readonly Context _concext;
+        private readonly Context _context;
 
-        public BottomGridRepository(Context concext)
+        public BottomGridRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
    
         public async void CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
@@ -22,7 +22,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             parameters.Add("@icon", createBottomGridDto.Icon);
             parameters.Add("@title", createBottomGridDto.Title);
             parameters.Add("@description", createBottomGridDto.Description);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -33,7 +33,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             string query = "Delete From BottomGrid where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -42,7 +42,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
         public async Task<List<ResultBottomGridDto>> GetAllBottomGridAsync()
         {
             string query = "Select * From BottomGrid";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultBottomGridDto>(query);
                 return values.ToList();
@@ -55,7 +55,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             string query = "Select * From BottomGrid where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetBottomGridDto>(query, parameters);
                 return values;
@@ -70,7 +70,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             parameters.Add("@title", updateBottomGridDto.Title);
             parameters.Add("@description", updateBottomGridDto.Description);
             parameters.Add("@bottomGridID", updateBottomGridDto.BottomGridID);
-            using (var connectiont = _concext.CreateConnection())
+            using (var connectiont = _context.CreateConnection())
             {
                 await connectiont.ExecuteAsync(query, parameters);
             }

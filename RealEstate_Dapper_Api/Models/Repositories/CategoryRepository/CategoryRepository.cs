@@ -7,11 +7,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly Context _concext;
+        private readonly Context _context;
 
-        public CategoryRepository(Context concext)
+        public CategoryRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
 
         public async void CreateCategory(CreateCategoryDto CategoryDto)
@@ -20,7 +20,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             var parameters = new DynamicParameters();
             parameters.Add("@categoryName", CategoryDto.CategoryName);
             parameters.Add("@categoryStatus", true);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -31,7 +31,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             string query = "Delete From Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("categoryID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }   
@@ -40,7 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
             string query = "Select * From Category";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values  = await connection.QueryAsync<ResultCategoryDto>(query);
                 return values.ToList();
@@ -53,7 +53,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             string query = "Select * From Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values= await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDto>(query,parameters);
                 return values;
@@ -67,7 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             parameters.Add("@categoryName", categoryDto.CategoryName);
             parameters.Add("@categoryStatus", categoryDto.CategoryStatus);
             parameters.Add("@categoryID", categoryDto.CategoryID);
-            using (var connectiont = _concext.CreateConnection()) { 
+            using (var connectiont = _context.CreateConnection()) { 
                 await connectiont.ExecuteAsync(query, parameters);
             }
         }

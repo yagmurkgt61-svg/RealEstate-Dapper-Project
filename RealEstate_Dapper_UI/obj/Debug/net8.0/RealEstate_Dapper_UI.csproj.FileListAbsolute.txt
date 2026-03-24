@@ -268,8 +268,9 @@ C:\Users\bt.stajyer\source\repos\RealEstate_Dapper_Api\RealEstate_Dapper_UI\obj\
 C:\Users\bt.stajyer\source\repos\RealEstate_Dapper_Api\RealEstate_Dapper_UI\obj\Debug\net8.0\ref\RealEstate_Dapper_UI.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\appsettings.json
-C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.staticwebassets.endpoints.json
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\libman.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.staticwebassets.runtime.json
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.staticwebassets.endpoints.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.exe
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.deps.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\RealEstate_Dapper_UI.runtimeconfig.json
@@ -278,6 +279,7 @@ C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealE
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Humanizer.dll
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.Build.dll
@@ -535,5 +537,3 @@ C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealE
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.pdb
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.genruntimeconfig.cache
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\ref\RealEstate_Dapper_UI.dll
-C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\libman.json
-C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -7,11 +7,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly Context _concext;
+        private readonly Context _context;
 
-        public EmployeeRepository(Context concext)
+        public EmployeeRepository(Context context)
         {
-            _concext = concext;
+            _context = context;
         }
         public async void CreateEmployee(CreateEmployeeDto createEmployeeDto)
         {
@@ -23,7 +23,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             parameters.Add("@phoneNumber", createEmployeeDto.PhoneNumber);
             parameters.Add("@imageUrl", createEmployeeDto.ImageUrl);
             parameters.Add("@status", true);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -34,7 +34,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             string query = "Delete From Employee where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
             parameters.Add("employeeID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
@@ -43,7 +43,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
         public async Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
         {
             string query = "Select * From Employee";
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultEmployeeDto>(query);
                 return values.ToList();
@@ -56,7 +56,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             string query = "Select * From Employee where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetByIdEmployeeDto>(query, parameters);
                 return values;
@@ -74,7 +74,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             parameters.Add("@imageUrl", updateEmployeeDto.ImageUrl);
             parameters.Add("@status", updateEmployeeDto.Status);
             parameters.Add("@employeeId", updateEmployeeDto.EmployeeID);
-            using (var connection = _concext.CreateConnection())
+            using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
             }
