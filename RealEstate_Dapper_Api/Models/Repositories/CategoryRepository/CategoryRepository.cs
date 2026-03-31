@@ -16,6 +16,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 
         public async void CreateCategory(CreateCategoryDto CategoryDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryName", CategoryDto.CategoryName);
@@ -28,6 +29,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 
         public async void DeleteCategory(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("categoryID", id);
@@ -39,6 +41,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Category";
             using (var connection = _context.CreateConnection())
             {
@@ -50,6 +53,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 
         public async Task<GetByIDCategoryDto> GetCategory(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From Category where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryID", id);
@@ -62,6 +66,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
 
         public async void UpdateCategory(UpdateCategoryDto categoryDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryName", categoryDto.CategoryName);

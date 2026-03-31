@@ -15,6 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
         }
         public async void CreateService(CreateServiceDto createServiceDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Service (ServiceName,ServiceStatus) values (@serviceName,@serviceStatus)";
             var parameters = new DynamicParameters();
             parameters.Add("@serviceName", createServiceDto.ServiceName);
@@ -27,6 +28,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
 
         public async void DeleteService(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Service where ServiceID=@ServiceID";
             var parameters = new DynamicParameters();
             parameters.Add("@ServiceID", id);
@@ -38,7 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
 
         public async Task<List<ResultServiceDto>> GetAllServiceAsync()
         {
-
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Service";
             using (var connection = _context.CreateConnection())
             {
@@ -50,6 +52,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
 
         public async Task<GetByIDServiceDto> GetService(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From Service where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
             parameters.Add("@serviceID", id);
@@ -62,6 +65,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
 
         public async void UpdateService(UpdateServiceDto updateServiceDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
             parameters.Add("@serviceName", updateServiceDto.ServiceName);

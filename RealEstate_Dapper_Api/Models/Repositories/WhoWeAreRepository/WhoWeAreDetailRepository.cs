@@ -15,6 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
 
         public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into WhoWeAreDetail (Title,Subtitle,Description1,Description2) values (@title,@subTitle,@description1,@description2)";
             var parameters = new DynamicParameters();
             parameters.Add("@title", createWhoWeAreDetailDto.Title);
@@ -29,6 +30,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
 
         public async void DeleteWhoWeAreDetail(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From WhoWeAreDetail where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
             parameters.Add("@whoWeAreDetailID", id);
@@ -40,6 +42,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
 
         public async Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetailAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From WhoWeAreDetail";
             using (var connection = _context.CreateConnection())
             {
@@ -51,6 +54,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
 
         public async Task<GetByIdWhoWeAreDetailDto> GetWhoWeAreDetail(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From WhoWeAreDetail where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
             parameters.Add("@whoWeAreDetailID", id);
@@ -63,6 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
 
         public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
             parameters.Add("@title", updateWhoWeAreDetailDto.Title);

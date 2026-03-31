@@ -23,6 +23,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories
 
         public async Task<List<ResultToDoListDto>> GetAllToDoListAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From ToDoList";
             using (var connection = _context.CreateConnection())
             {

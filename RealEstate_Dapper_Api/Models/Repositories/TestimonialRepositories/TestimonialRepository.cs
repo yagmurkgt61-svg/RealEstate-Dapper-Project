@@ -15,6 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.TestimonialRepositories
         }
         public async Task<List<ResultTestimonialDto>> GetAllTestimonialAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Testimonial";
             using (var connection = _context.CreateConnection())
             {

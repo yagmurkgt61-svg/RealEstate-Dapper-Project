@@ -14,6 +14,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.MessageRepositories
 
         public async Task<List<ResultInBoxMessageDto>> GetInBoxLast3MessageListByReceiver(int id)
         {
+            // tabloda belirlediğim id'ye sahip kullanıcının gelen kutusundaki son 3 mesajı listeleyen sorgu
             string query = "Select Top(3) MessageId,Name,Subject,Detail,SendDate,IsRead,UserImageUrl From Message inner join AppUser On Message.Sender=AppUser.UserId Where Receiver=@receiverId order by MessageId Desc";
             var parameters = new DynamicParameters();
             parameters.Add("@receiverId",id);

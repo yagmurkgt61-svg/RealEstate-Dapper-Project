@@ -14,6 +14,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EstateAgentRepositories.Dash
         }
         public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync(int id)
         {
+            // Product tablosundan belirli çalışanın en son eklediği 5 ürünü kategori bilgisiyle birlikte getirir
             string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where EmployeeID=@employeeID Order By ProductID Desc";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);

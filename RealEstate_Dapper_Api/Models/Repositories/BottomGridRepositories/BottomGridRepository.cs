@@ -1,9 +1,6 @@
 ﻿using Dapper;
 using RealEstate_Dapper_Api.Dtos.BottomGridDtos;
-using RealEstate_Dapper_Api.Dtos.ProductDtos;
-using RealEstate_Dapper_Api.Dtos.ServiceDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
-
 namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 {
     public class BottomGridRepository : IBottomGridRepository
@@ -17,6 +14,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
    
         public async void CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into BottomGrid (Icon,Title,Description) values (@icon,@title,@description)";
             var parameters = new DynamicParameters();
             parameters.Add("@icon", createBottomGridDto.Icon);
@@ -30,6 +28,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 
         public async void DeleteBottomGrid(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From BottomGrid where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridID", id);
@@ -41,6 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 
         public async Task<List<ResultBottomGridDto>> GetAllBottomGridAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From BottomGrid";
             using (var connection = _context.CreateConnection())
             {
@@ -52,6 +52,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 
         public async Task<GetBottomGridDto> GetBottomGrid(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From BottomGrid where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridID", id);
@@ -64,6 +65,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
 
         public async void UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update BottomGrid Set Icon=@icon,Title=@title, Description=@description where BottomGridID=@bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@icon", updateBottomGridDto.Icon);

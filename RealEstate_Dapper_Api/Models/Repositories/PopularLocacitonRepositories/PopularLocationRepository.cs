@@ -17,6 +17,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
 
         public async void CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into PopularLocation (CityName,ImageUrl) values (@cityName,@imageUrl)";
             var parameters = new DynamicParameters();
             parameters.Add("@cityName", createPopularLocationDto.CityName);
@@ -26,7 +27,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
                 await connection.ExecuteAsync(query, parameters);
             }
         }
-
+        // tabloda belirlediğim id'ye sahip kaydı silen sorgu
         public async void DeletePopularLocation(int id)
         {
             string query = "Delete From PopularLocation where LocationID=@locationID";
@@ -40,6 +41,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
 
         public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From PopularLocation";
             using (var connection = _context.CreateConnection())
             {
@@ -50,6 +52,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
 
         public async Task<GetByIDPopularLocationDto> GetPopularLocation(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From PopularLocation where LocationID=@locationID  ";
             var parameters = new DynamicParameters();
             parameters.Add("@locationID", id);
@@ -62,6 +65,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
 
         public async void UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl where LocationID=@locationID";
             var parameters = new DynamicParameters();
             parameters.Add("@cityName", updatePopularLocationDto.CityName);

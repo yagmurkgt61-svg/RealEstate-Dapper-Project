@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EstateAgentRepositories.Dash
 
         public async Task<List<ResultChartDto>> Get5CityForChart()
         {
-
+            // tablodaki en fazla ürünün bulunduğu ilk 5 şehri ve bu şehirlerde kaçar adet ürün olduğunu listeler
             string query = "Select top(5) City,Count(*) as 'CityCount' From Product Group By City order by CityCount Desc";
             using (var connection = _context.CreateConnection())
             {

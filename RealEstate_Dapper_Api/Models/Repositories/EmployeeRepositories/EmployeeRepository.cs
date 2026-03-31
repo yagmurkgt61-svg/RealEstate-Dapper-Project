@@ -15,6 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
         }
         public async void CreateEmployee(CreateEmployeeDto createEmployeeDto)
         {
+            // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Employee (Name,Title,Mail,PhoneNumber,ImageUrl,Status) values (@name,@title,@mail,@phoneNumber,@imageUrl,@status)";
             var parameters = new DynamicParameters();
             parameters.Add("@name", createEmployeeDto.Name);
@@ -31,6 +32,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
 
         public async void DeleteEmployee(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Employee where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
             parameters.Add("employeeID", id);
@@ -42,6 +44,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
 
         public async Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Employee";
             using (var connection = _context.CreateConnection())
             {
@@ -53,6 +56,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
 
         public async Task<GetByIdEmployeeDto> GetEmployee(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydı getiren sorgu
             string query = "Select * From Employee where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
@@ -65,6 +69,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
 
         public async void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
         {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl,Status=@status Where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();
             parameters.Add("@name", updateEmployeeDto.Name);

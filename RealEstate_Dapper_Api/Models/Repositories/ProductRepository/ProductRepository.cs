@@ -16,6 +16,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         }
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
+            // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Product";
             using (var connection = _context.CreateConnection())
             {
@@ -27,7 +28,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            // Use LEFT JOIN so products without a category are also returned (CategoryName will be NULL)
+            // tabloda bulunan tüm kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
             using (var connection = _context.CreateConnection())
             {
@@ -39,6 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync()
         {
+            // tabloda bulunan son 5 kaydı Category tablosu ile ilişkilendirerek listeleyen sorgu
             string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
@@ -49,6 +51,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByFalse(int id)
         {
+            // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü false olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID and ProductStatus=0";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
@@ -62,6 +65,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByTrue(int id)
         {
+            // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü true olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID and ProductStatus=1";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
@@ -75,6 +79,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async void ProductDealOfTheDayStatusChangeToFalse(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydın DealOfTheDay alanını false yapan sorgu
             string query = "Update Product Set DealOfTheDay=0 Where ProductID=@productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);
@@ -86,6 +91,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async void ProductDealOfTheDayStatusChangeToTrue(int id)
         {
+            // tabloda belirlediğim id'ye sahip kaydın DealOfTheDay alanını true yapan sorgu
             string query = "Update Product Set DealOfTheDay=1 Where ProductID=@productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);

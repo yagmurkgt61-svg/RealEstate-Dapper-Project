@@ -36,6 +36,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ContactRepositories
 
         public async Task<List<Last4ContactResultDto>> GetLast4ContactAsync()
         {
+            // Contact tablosundaki son 4 kaydı ContactID'ye göre azalan sırada getiren SQL sorgusu
             string query = "Select Top(4)* From Contact order by ContactID Desc";
             using (var connection = _context.CreateConnection())
             {
