@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate_Dapper_Api.Dtos.CategoryDtos;
+using RealEstate_Dapper_Api.Dtos.ProductDtos;
 using RealEstate_Dapper_Api.Models.Repositories.ProductRepository;
 
 namespace RealEstate_Dapper_Api.Controllers
@@ -20,6 +22,13 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _productRepository.GetAllProductAsync();
             return Ok(values);
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+        {
+            _productRepository.UpdateProduct(updateProductDto);
+            return Ok("İlan Başarılı Bir Şekilde Güncellendi");
+        }
+
         [HttpGet("ProductListWithCategory")]
         public async Task<IActionResult> ProductListWithCategory()
         {

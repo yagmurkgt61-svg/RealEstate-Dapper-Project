@@ -100,5 +100,19 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
                 await connection.ExecuteAsync(query, parameters);
             }
         }
+
+        public async void UpdateProduct(UpdateProductDto productDto)
+        {
+            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
+            string query = "Update Product Set Title=@title,ProductStatus=@productStatus where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@title", productDto.Title);
+            parameters.Add("@productStatus", productDto.ProductStatus);
+            parameters.Add("@ProductID", productDto.ProductStatus);
+            using (var connectiont = _context.CreateConnection())
+            {
+                await connectiont.ExecuteAsync(query, parameters);
+            }
+        }
     }
 }

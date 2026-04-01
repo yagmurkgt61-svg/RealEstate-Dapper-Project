@@ -433,6 +433,22 @@
   },
   {
     "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Products",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateProductDto",
+        "Type": "RealEstate_Dapper_Api.Dtos.ProductDtos.UpdateProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
     "Method": "Last5ProductList",
     "RelativePath": "api/Products/Last5ProductList",
     "HttpMethod": "GET",
