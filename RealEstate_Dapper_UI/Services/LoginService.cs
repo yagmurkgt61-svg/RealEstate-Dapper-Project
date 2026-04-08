@@ -10,7 +10,7 @@ namespace RealEstate_Dapper_UI.Services
         {
             _contextAccessor = contextAccessor;
         }
-        // Login olan kullanıcının Id'sini yakalamak için kullanılır.
+        
         public string GetUserId => _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     }
 }

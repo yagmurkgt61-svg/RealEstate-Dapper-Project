@@ -25,9 +25,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EstateAgentRepositories.Dash
         public int ProductCountByEmployeeId(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydın sayısını getiren sorgu
-            string query = "Select Count(*) From Product Where EmployeeID=@employeeID";
+            string query = "Select Count(*) From Product Where AppUserId=@AppUserId";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeID", id);
+            parameters.Add("@AppUserId", id);
 
             using (var connection = _context.CreateConnection())
             {
@@ -40,9 +40,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EstateAgentRepositories.Dash
         public int ProductCountByStatusFalse(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydın ve ProductStatus değeri false olan kayıtların sayısını getiren sorgu
-            string query = "Select Count(*) From Product Where EmployeeID=@employeeID and ProductStatus=0";
+            string query = "Select Count(*) From Product Where AppUserId=@AppUserId and ProductStatus=0";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeID", id);
+            parameters.Add("@AppUserId", id);
 
             using (var connection = _context.CreateConnection())
             {
@@ -55,9 +55,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EstateAgentRepositories.Dash
         public int ProductCountByStatusTrue(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydın ve ProductStatus değeri true olan kayıtların sayısını getiren sorgu
-            string query = "Select Count(*) From Product Where EmployeeID=@employeeID and ProductStatus=1";
+            string query = "Select Count(*) From Product Where AppUserId=@AppUserId and ProductStatus=1";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeID", id);
+            parameters.Add("@AppUserId", id);
 
             using (var connection = _context.CreateConnection())
             {

@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.AppUsersController",
+    "Method": "GetAppUserByProductId",
+    "RelativePath": "api/AppUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RealEstate_Dapper_Api.Controllers.BottomGridsController",
     "Method": "BottomGridList",
     "RelativePath": "api/BottomGrids",
@@ -422,6 +438,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductDetailsController",
+    "Method": "GetProductDetailByProductId",
+    "RelativePath": "api/ProductDetails/GetProductDetailByProductId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductImagesController",
+    "Method": "GetProductImageById",
+    "RelativePath": "api/ProductImages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
     "Method": "ProductList",
     "RelativePath": "api/Products",
@@ -443,6 +491,38 @@
         "Name": "updateProductDto",
         "Type": "RealEstate_Dapper_Api.Dtos.ProductDtos.UpdateProductDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
+    "Method": "CreateProduct",
+    "RelativePath": "api/Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createProductDto",
+        "Type": "RealEstate_Dapper_Api.Dtos.ProductDtos.CreateProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
+    "Method": "GetProductByProductId",
+    "RelativePath": "api/Products/GetProductByProductId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -529,6 +609,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.PropertyAmenitiesController",
+    "Method": "ResultPropertyAmenityByStatusTrue",
+    "RelativePath": "api/PropertyAmenities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

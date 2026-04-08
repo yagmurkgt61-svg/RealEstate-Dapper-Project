@@ -133,7 +133,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories
         public string EmployeeNameByMaxProductCount()
         {
             // Çalışanların adını ve kaç tane ürüne sahip olduğunu getiren sorgu
-            string query = "Select Name,Count(*) 'product_count' From Product inner join Employee On Product.EmployeeID=Employee.EmployeeID Group By Name Order By product_count Desc";
+            string query = "Select Name,Count(*) 'product_count' From Product inner join Employee On Product.AppUserId=Employee.EmployeeID Group By Name Order By product_count Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);

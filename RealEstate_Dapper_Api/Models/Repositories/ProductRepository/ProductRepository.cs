@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Dtos.EmployeeDtos;
+using RealEstate_Dapper_Api.Dtos.ProductDetailDtos;
 using RealEstate_Dapper_Api.Dtos.ProductDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
@@ -14,6 +15,30 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         {
             _context = context;
         }
+
+        public async Task CreateProduct(CreateProductDto createProductDto)
+        {
+            string query = "Insert Into Product (Title,Price,City,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@City,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
+            var parameters = new DynamicParameters();
+            parameters.Add("@Title", createProductDto.Title);
+            parameters.Add("@Price", createProductDto.Price);
+            parameters.Add("@City", createProductDto.City);
+            parameters.Add("@District", createProductDto.District);
+            parameters.Add("@CoverImage", createProductDto.CoverImage);
+            parameters.Add("@Adress", createProductDto.Adress);
+            parameters.Add("@Description", createProductDto.Description);
+            parameters.Add("@Type", createProductDto.Type);
+            parameters.Add("@DealOfTheDay", createProductDto.DealOfTheDay);
+            parameters.Add("@ProductStatus", createProductDto.ProductStatus);
+            parameters.Add("@AdvertisementDate", createProductDto.AdvertisementDate);
+            parameters.Add("@ProductCategory", createProductDto.ProductCategory);
+            parameters.Add("@AppUserId", createProductDto.AppUserId);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
@@ -52,7 +77,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByFalse(int id)
         {
             // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü false olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID and ProductStatus=0";
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AapUserId and ProductStatus=0";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
@@ -66,9 +91,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByTrue(int id)
         {
             // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü true olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID and ProductStatus=1";
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AppUserId and ProductStatus=1";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeID", id);
+            parameters.Add("@AppUserId", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query,parameters);
@@ -77,7 +102,31 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
-        public async void ProductDealOfTheDayStatusChangeToFalse(int id)
+        public async Task<GetProductByProductIdDto> GetProductByProductId(int id)
+        {
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,AdvertisementDate From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values=await connection.QueryAsync<GetProductByProductIdDto>(query, parameters);
+                return values.FirstOrDefault();
+            }
+        }
+
+        public async Task<GetProductDetailByIdDto> GetProductDetailByProductId(int id)
+        {
+            string query = "Select * From ProductDetails Where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<GetProductDetailByIdDto>(query, parameters);
+                return values.FirstOrDefault();
+            }
+        }
+
+        public async Task ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydın DealOfTheDay alanını false yapan sorgu
             string query = "Update Product Set DealOfTheDay=0 Where ProductID=@productID";
@@ -89,7 +138,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
-        public async void ProductDealOfTheDayStatusChangeToTrue(int id)
+        public async Task ProductDealOfTheDayStatusChangeToTrue(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydın DealOfTheDay alanını true yapan sorgu
             string query = "Update Product Set DealOfTheDay=1 Where ProductID=@productID";
