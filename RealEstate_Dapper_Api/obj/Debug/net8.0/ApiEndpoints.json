@@ -612,6 +612,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RealEstate_Dapper_Api.Controllers.ProductsController",
+    "Method": "ResultProductWithSearchList",
+    "RelativePath": "api/Products/ResultProductWithSearchList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchKeyValue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "propertyCategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RealEstate_Dapper_Api.Controllers.PropertyAmenitiesController",
     "Method": "ResultPropertyAmenityByStatusTrue",
     "RelativePath": "api/PropertyAmenities",
