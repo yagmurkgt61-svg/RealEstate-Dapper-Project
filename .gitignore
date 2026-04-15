@@ -1,0 +1,56 @@
+# Build klasörleri
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# OS dosyaları
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+
+# Publish
+publish/
+
+# Environment dosyaları
+appsettings.Development.json
+
+# Secrets
+secrets.json
+
+# Cache
+*.cache
+
+# Database local files
+*.mdf
+*.ldf
+
+# Test sonuçları
+TestResults/
+
+# IIS Express
+.vsconfig
+
+# Node (frontend varsa)
+node_modules/
+
+# Coverage
+coverage/
+
+# Docker
+docker-compose.override.yml
