@@ -161,3 +161,4 @@ C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealE
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_Api\obj\Debug\net8.0\RealEstate_Dapper_Api.genruntimeconfig.cache
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_Api\obj\Debug\net8.0\ref\RealEstate_Dapper_Api.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_Api\bin\Debug\net8.0\dotnet-tools.json
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1542,9 +1542,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "city": {
-            "type": "string",
-            "nullable": true
+          "cityId": {
+            "type": "integer",
+            "format": "int32"
           },
           "district": {
             "type": "string",

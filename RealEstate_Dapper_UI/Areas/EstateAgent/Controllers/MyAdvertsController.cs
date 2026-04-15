@@ -24,8 +24,8 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         public async Task<IActionResult> ActiveAdverts()
         {
             var id = _loginService.GetUserId;
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44319/api/Products/ProductAdvertsListByEmployeeByTrue?id=" + id);
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync("/api/Products/ProductAdvertsListByEmployeeByTrue?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -38,8 +38,8 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         public async Task<IActionResult> PassiveAdverts()
         {
             var id = _loginService.GetUserId;
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44319/api/Products/ProductAdvertsListByEmployeeByFalse?id=" + id);
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync("/api/Products/ProductAdvertsListByEmployeeByFalse?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -52,8 +52,8 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateAdvert()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44319/api/Categories");
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync("/api/Categories");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             List<SelectListItem> categoryValues = (from x in values.ToList()
@@ -74,10 +74,10 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
             createProductDto.ProductStatus = true;
             var id = _loginService.GetUserId;
             createProductDto.EmployeeId= int.Parse(id);
-            var client = _httpClientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
             var jsonData = JsonConvert.SerializeObject(createProductDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44319/api/Products", stringContent);
+            var responseMessage = await client.PostAsync("/api/Products", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

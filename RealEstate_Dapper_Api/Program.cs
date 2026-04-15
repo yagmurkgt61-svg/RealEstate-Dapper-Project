@@ -21,6 +21,17 @@ using RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyAllowedOrigins",
+        policy =>
+        {
+            policy.WithOrigins("https://yagmurkagit.com/", "https://localhost:44302/") // UI adresin
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 // Add services to the container.
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -63,19 +74,25 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors("MyAllowedOrigins");
 
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<SignalRHub>("/signalRHub");
+
+app.MapGet("/", () => Results.Ok("API ayakta"));
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 //localhost:1234/swagger/category/index
 //localhost:1234/signalrhub
 app.Run();

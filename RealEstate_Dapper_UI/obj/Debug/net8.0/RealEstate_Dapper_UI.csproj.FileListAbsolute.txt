@@ -530,10 +530,11 @@ C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealE
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\swae.build.ex.cache
-C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEsta.9BB3EB07.Up2Date
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\refint\RealEstate_Dapper_UI.dll
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.pdb
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\RealEstate_Dapper_UI.genruntimeconfig.cache
 C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\ref\RealEstate_Dapper_UI.dll
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\bin\Debug\net8.0\dotnet-tools.json
+C:\Users\bt.stajyer\Documents\GitHub\yagmurkagit\RealEstate-Dapper-Project\RealEstate_Dapper_UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

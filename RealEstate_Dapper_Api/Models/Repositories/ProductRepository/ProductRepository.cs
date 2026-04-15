@@ -18,11 +18,11 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task CreateProduct(CreateProductDto createProductDto)
         {
-            string query = "Insert Into Product (Title,Price,City,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@City,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
+            string query = "Insert Into Product (Title,Price,CityId,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@CityId,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
             var parameters = new DynamicParameters();
             parameters.Add("@Title", createProductDto.Title);
             parameters.Add("@Price", createProductDto.Price);
-            parameters.Add("@City", createProductDto.City);
+            parameters.Add("@CityId", createProductDto.CityId);
             parameters.Add("@District", createProductDto.District);
             parameters.Add("@CoverImage", createProductDto.CoverImage);
             parameters.Add("@Adress", createProductDto.Adress);
@@ -54,7 +54,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
             // tabloda bulunan tüm kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
+            string query = "Select ProductID,Title,Price,CityId,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);

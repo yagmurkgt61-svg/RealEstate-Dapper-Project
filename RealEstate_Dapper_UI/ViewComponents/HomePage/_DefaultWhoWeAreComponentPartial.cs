@@ -16,10 +16,10 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var client2 = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44319/api/WhoWeAreDetail");
-            var responseMessage2 = await client2.GetAsync("https://localhost:44319/api/Services");
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var client2 = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync("/api/WhoWeAreDetail");
+            var responseMessage2 = await client2.GetAsync("/api/Services");
             if (responseMessage.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

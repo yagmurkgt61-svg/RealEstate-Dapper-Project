@@ -13,7 +13,7 @@
                 <div class="card">
                     <script type="text/javascript">
                         $(document).ready(()=>{
-                            var connection=new signalR.HubConnectionBuilder().withUrl("https://localhost:44319/SignalRHub").build();
+                            var connection=new signalR.HubConnectionBuilder().withUrl("/SignalRHub").build();
                             $("#connstatus").text(connection.state);
                             connection.start().then(()=>{
                                 $("#connstatus").text(connection.state);
