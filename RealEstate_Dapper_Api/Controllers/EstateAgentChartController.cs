@@ -10,6 +10,7 @@ namespace RealEstate_Dapper_Api.Controllers
     {
         private readonly IChartRepository _chartRepository;
 
+
         public EstateAgentChartController(IChartRepository chartRepository)
         {
             _chartRepository = chartRepository;
