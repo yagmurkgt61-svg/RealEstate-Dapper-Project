@@ -18,6 +18,7 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             var values = await _productRepository.GetProductDetailByProductId(id);
             return Ok(values);
+
         } 
     }
 }
