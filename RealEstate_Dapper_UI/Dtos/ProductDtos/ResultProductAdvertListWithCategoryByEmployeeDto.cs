@@ -5,7 +5,8 @@
         public int productID { get; set; }
         public string title { get; set; }
         public decimal price { get; set; }
-        public string city { get; set; }
+        public int CityId { get; set; }
+        public string cityName { get; set; }
         public string district { get; set; }
         public string categoryName { get; set; }
         public string coverImage { get; set; }

@@ -18,11 +18,12 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task CreateProduct(CreateProductDto createProductDto)
         {
-            string query = "Insert Into Product (Title,Price,CityId,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@CityId,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
+            string query = "Insert Into Product (Title,Price,CityId,CityName,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@CityId,@CityName,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
             var parameters = new DynamicParameters();
             parameters.Add("@Title", createProductDto.Title);
             parameters.Add("@Price", createProductDto.Price);
             parameters.Add("@CityId", createProductDto.CityId);
+            parameters.Add("@CityName", createProductDto.CityName);
             parameters.Add("@District", createProductDto.District);
             parameters.Add("@CoverImage", createProductDto.CoverImage);
             parameters.Add("@Adress", createProductDto.Adress);
@@ -54,7 +55,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
             // tabloda bulunan tüm kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,CityId,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
@@ -66,7 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync()
         {
             // tabloda bulunan son 5 kaydı Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
+            string query = "Select Top(5) ProductID,Title,Price,CityId,CityName,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
@@ -77,7 +78,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByFalse(int id)
         {
             // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü false olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AapUserId and ProductStatus=0";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AapUserId and ProductStatus=0";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
@@ -91,7 +92,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByTrue(int id)
         {
             // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü true olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AppUserId and ProductStatus=1";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AppUserId and ProductStatus=1";
             var parameters = new DynamicParameters();
             parameters.Add("@AppUserId", id);
             using (var connection = _context.CreateConnection())
@@ -102,9 +103,21 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayTrueWithCategoryAsync()
+        {
+            // tabloda bulunan tüm kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where DealOfTheDay=1";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+                return values.ToList();
+
+            }
+        }
+
         public async Task<GetProductByProductIdDto> GetProductByProductId(int id)
         {
-            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,AdvertisementDate From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,AdvertisementDate From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
@@ -150,14 +163,14 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+        public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string cityName)
         {
 
-            string query = "Select * From Product Where Title like '%" + @searchKeyValue + "%'and ProductCategory=@propertyCategoryId and City=@city";
+            string query = "Select * From Product Where Title like '%" + @searchKeyValue + "%'and ProductCategory=@propertyCategoryId and CityName=@cityName";
             var parameters = new DynamicParameters();
             parameters.Add("@searchKeyValue", searchKeyValue);
             parameters.Add("@propertyCategoryId", propertyCategoryId);
-            parameters.Add("@city", city);
+            parameters.Add("@cityName", cityName);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);

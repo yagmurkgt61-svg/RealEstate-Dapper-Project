@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RealEstate_Dapper_Api.Hubs;
+using RealEstate_Dapper_Api.Middlewares;
 using RealEstate_Dapper_Api.Models.DapperContext;
 using RealEstate_Dapper_Api.Models.Repositories.AppUserRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories;
@@ -16,9 +18,11 @@ using RealEstate_Dapper_Api.Models.Repositories.ProductRepository;
 using RealEstate_Dapper_Api.Models.Repositories.PropertyAmenityRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.ServiceRepository;
 using RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories;
+using RealEstate_Dapper_Api.Models.Repositories.SubFeatureRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.TestimonialRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository;
+using RealEstate_Dapper_Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,7 +57,8 @@ builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
-builder.Services.AddTransient<ICityRepository, CityRepository>();
+builder.Services.AddTransient<ICityRepository, CityRepository>();   
+builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();   
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", builder =>
@@ -73,11 +78,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpClient<TelegramService>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+    {
+        options.LoginPath = "/Login/Index"; // Giriş yapılmamışsa yönlendirilecek sayfa
+        options.LogoutPath = "/Login/Logout";
+        options.Cookie.Name = "RealEstateCookie"; // Cookie adı
+    });
 var app = builder.Build();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Configure the HTTP request pipeline.
 
-    app.UseSwagger();
+app.UseSwagger();
     app.UseSwaggerUI();
 
 app.UseCors("CorsPolicy");

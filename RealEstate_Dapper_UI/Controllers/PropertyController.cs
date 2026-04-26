@@ -62,7 +62,7 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.productId = values.productID;
             ViewBag.title1 = values.title.ToString();
             ViewBag.price = values.price;
-            ViewBag.city = values.city;
+            ViewBag.city = values.cityName;
             ViewBag.district = values.district;
             ViewBag.adress = values.adress;  
             ViewBag.type = values.type; 

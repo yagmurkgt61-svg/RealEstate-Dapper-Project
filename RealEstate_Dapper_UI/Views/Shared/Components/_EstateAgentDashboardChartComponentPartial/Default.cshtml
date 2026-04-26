@@ -20,8 +20,8 @@
     </div>
 
     <script>
-        var xValuesChart1 = @Html.Raw(Json.Serialize(Model.Select(item => item.City)));
-        var yValuesChart1 = @Html.Raw(Json.Serialize(Model.Select(item => item.CityCount)));
+        var xValuesChart1 = @Html.Raw(Json.Serialize(Model.Select(item => item.cityName)));
+        var yValuesChart1 = @Html.Raw(Json.Serialize(Model.Select(item => item.cityCount)));
         var barColorsChart1 = ["rgb(106, 212, 221)", "rgb(127, 199, 217)", "rgb(54, 84, 134)", "rgb(134, 182, 246)", "rgb(0, 141, 218)"];
 
         new Chart("myChart", {
@@ -42,8 +42,8 @@
         }
         });
 
-        var xValuesChart2 = @Html.Raw(Json.Serialize(Model.Select(item => item.City)));
-        var yValuesChart2 = @Html.Raw(Json.Serialize(Model.Select(item => item.CityCount)));
+        var xValuesChart2 = @Html.Raw(Json.Serialize(Model.Select(item => item.cityName)));
+        var yValuesChart2 = @Html.Raw(Json.Serialize(Model.Select(item => item.cityCount)));
         var barColorsChart2 = ["rgb(106, 212, 221)", "rgb(127, 199, 217)", "rgb(54, 84, 134)", "rgb(134, 182, 246)", "rgb(0, 141, 218)"];
 
         new Chart("myChart1", {

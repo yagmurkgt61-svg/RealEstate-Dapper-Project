@@ -1,4 +1,4 @@
-﻿@model List<RealEstate_Dapper_UI.Dtos.ProductDtos.ResultProductDto>
+﻿@model List<ResultProductDto>
 <section class="locations-1" id="locations">
     <div class="locations py-5">
         <div class="container py-lg-5 py-md-4 py-2">
@@ -14,7 +14,7 @@
                             <img class="img-fluid" style="height:220px; width:700px;" src="@item.CoverImage" alt="">
                             <div class="box-content">
                                 <h3 class="title">$ @item.price</h3>
-                                <span class="post">@item.adress @item.district - @item.city</span>
+                                <span class="post">@item.adress @item.district - @item.cityName</span>
                             </div>
                         </div>
                     </a>

@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using RealEstate_Dapper_UI.Middlewares;
 using RealEstate_Dapper_UI.Services;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddHttpClient<TelegramService>();
 
 builder.Services.AddHttpClient("RealEstateClient", client =>
 {
@@ -30,6 +31,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Middleware
 if (!app.Environment.IsDevelopment())

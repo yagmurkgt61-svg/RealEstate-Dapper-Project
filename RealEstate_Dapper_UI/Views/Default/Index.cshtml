@@ -1,4 +1,4 @@
-﻿@model CompositeViewModel
+﻿@model List<ResultCategoryDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
                         <span class="input-group-btn">
                             <select class="btn btn-default" name="propertyCategoryId" required>
                                 <option selected="">Gayrimenkul Türü</option>
-                                @foreach (var item in Model.CategoryList)
+                                @foreach (var item in Model)
                                 {
                                     <option value="@item.CategoryID">@item.CategoryName</option>
 
@@ -52,14 +52,15 @@
                 <section id="bottom" class="demo">
                     <a href="#bottom"><span></span>İlan Listesi</a>
                 </section>
+                
+
             </div>
         </div>
-    </div>
+    </div><section class="locations-1" id="locations">
+</section>
 </section>
 
-@* @await Html.PartialAsync("~/Views/Default/PartialSearch.cshtml")
- @await Component.InvokeAsync("_DefaultFeatureComponentPartial") *@
-@* @await Component.InvokeAsync("_DefaultHomePageProductList") *@
+@await Component.InvokeAsync("_DefaultHomePageProductList") 
 @await Component.InvokeAsync("_DefaultWhoWeAreComponentPartial")
 @await Component.InvokeAsync("_DefaultBottomGridComponentPartial")
 @await Component.InvokeAsync("_DefaultProductListExploreCitiesComponentPartial")

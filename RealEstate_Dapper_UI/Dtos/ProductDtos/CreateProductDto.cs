@@ -4,7 +4,8 @@
     {
         public string Title { get; set; }
         public int Price { get; set; }
-        public string City { get; set; }
+        public int CityId { get; set; }
+        public string CityName { get; set; }
         public string District { get; set; }
         public string CoverImage { get; set; }
         public string Adress { get; set; }

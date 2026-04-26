@@ -10,7 +10,6 @@
         <div class="container py-lg-5 py-md-4 py-2">
             <div class="heading text-center mx-auto">
                 <h3 class="title-big">Tüm Satılık & Kiralık İlanlar (@Model.Count)</h3>
-                <h2>@ViewBag.searchKeyValue -- @ViewBag.propertyCategoryId -- @ViewBag.city</h2>
             </div>
             <div class="row pt-md-5 pt-4">
                 @foreach (var item in Model)
@@ -22,7 +21,7 @@
                                 <img class="img-fluid" style="height:220px; width:700px;" src="@item.CoverImage" alt="">
                                 <div class="box-content">
                                     <h3 class="title">$ @item.Price</h3>
-                                    <span class="post">@item.Adress @item.District - @item.City</span>
+                                    <span class="post">@item.Adress @item.District - @item.CityName</span>
                                 </div>
                             </div>
                         </a>

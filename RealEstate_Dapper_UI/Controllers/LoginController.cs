@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
@@ -46,14 +47,12 @@ namespace RealEstate_Dapper_UI.Controllers
                     if (tokenModel.Token != null) 
                     {
                         claims.Add(new Claim("realestatetoken", tokenModel.Token));
-                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
-                        var authProps = new AuthenticationProperties
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); var authProps = new AuthenticationProperties
                         {
                             ExpiresUtc = tokenModel.ExpireDate,
                             IsPersistent = true
                         };
-                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal
-                            (claimsIdentity), authProps);
+                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
                         return RedirectToAction("Index", "Employee");
                     }
                 }

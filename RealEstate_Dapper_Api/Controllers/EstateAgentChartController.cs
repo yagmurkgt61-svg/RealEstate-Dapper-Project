@@ -18,7 +18,14 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetChart5() 
         {
-            return Ok(await _chartRepository.Get5CityForChart());
+            try
+            { 
+                return Ok(await _chartRepository.Get5CityForChart());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }
