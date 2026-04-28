@@ -64,10 +64,20 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultLast3ProductWithCategoryDto>> GetLast3ProductAsync()
+        {
+            string query = "Select Top(3) ProductID,Title,Price,CityId,CityName,District,ProductCategory,CategoryName,AdvertisementDate,CoverImage,Description From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Order By ProductID Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductWithCategoryDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync()
         {
             // tabloda bulunan son 5 kaydı Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select Top(5) ProductID,Title,Price,CityId,CityName,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
+            string query = "Select Top(5) ProductID,Title,Price,CityId,CityName,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory=Category.CategoryID Where Type=N'Kiralık' Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
@@ -82,7 +92,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
-            {
+            {   
                 var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query, parameters);
                 return values.ToList();
 

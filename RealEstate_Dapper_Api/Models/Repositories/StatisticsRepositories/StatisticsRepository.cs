@@ -49,7 +49,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories
         public decimal AverageProductPriceByRent()
         {
             // Type alanı 'Kiralık' olan kayıtların Price alanlarının ortalamasını getiren sorgu
-            string query = "Select Avg(Price) From Product where Type='Kiralık'";
+            string query = "Select Avg(Price) From Product where Type=N'Kiralık'";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -61,7 +61,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories
         public decimal AverageProductPriceBySale()
         {
             // Type alanı 'Satılık' olan kayıtların Price alanlarının ortalamasını getiren sorgu
-            string query = "Select Avg(Price) From Product where Type='Satılık'";
+            string query = "Select Avg(Price) From Product where Type=N'Satılık'";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -109,7 +109,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories
         public string CityNameByMaxProductCount()
         {
             // En fazla ürüne sahip şehrin adını getiren sorgu
-            string query = "Select top(1) City,Count(*) as 'product_count' From Product Group By City order by product_count Desc";
+            string query = "Select top(1) CityName,Count(*) as 'product_count' From Product Group By CityName order by product_count Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);
@@ -121,7 +121,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.StatisticsRepositories
         public int DifferentCityCount()
         {
             // Ürünlerin bulunduğu farklı şehirlerin sayısını getiren sorgu
-            string query = "Select Count(Distinct(City)) From Product";
+            string query = "Select Count(Distinct(CityName)) From Product";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);

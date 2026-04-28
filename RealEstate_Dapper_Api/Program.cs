@@ -26,16 +26,16 @@ using RealEstate_Dapper_Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("MyAllowedOrigins",
-        policy =>
-        {
-            policy.WithOrigins("https://yagmurkagit.com/", "https://localhost:44302/") // UI adresin
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("MyAllowedOrigins",
+//        policy =>
+//        {
+//            policy.WithOrigins("https://yagmurkagit.com/", "https://localhost:44302/") // UI adresin
+//                  .AllowAnyHeader()
+//                  .AllowAnyMethod();
+//        });
+//});
 
 // Add services to the container.
 builder.Services.AddTransient<Context>();
@@ -58,17 +58,22 @@ builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>()
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
 builder.Services.AddTransient<ICityRepository, CityRepository>();   
-builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();   
-builder.Services.AddCors(opt =>
+builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
+
+builder.Services.AddCors(options =>
 {
-    opt.AddPolicy("CorsPolicy", builder =>
+    options.AddPolicy("CorsPolicy", policy =>
     {
-        builder.AllowAnyHeader()
-        .AllowAnyMethod()
-        .SetIsOriginAllowed((host) => true)
-        .AllowCredentials();
+        policy.WithOrigins(
+                "https://yagmurkagit.com",
+                "https://localhost:44302"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
+
 builder.Services.AddSignalR();
 builder.Services.AddHttpClient();
 
@@ -98,8 +103,6 @@ app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
-app.UseCors("MyAllowedOrigins");
 
 app.UseAuthorization();
 

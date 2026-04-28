@@ -4,11 +4,15 @@ using RealEstate_Dapper_UI.Services;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"] ?? throw new Exception("Api BaseUrl bulunamadı!");
+
+
 builder.Services.AddHttpClient<TelegramService>();
 
 builder.Services.AddHttpClient("RealEstateClient", client =>
 {
-    client.BaseAddress = new Uri("https://api.yagmurkagit.com/");
+    client.BaseAddress = new Uri(apiBaseUrl);
 });
 
 builder.Services.AddAuthentication("Cookies")
