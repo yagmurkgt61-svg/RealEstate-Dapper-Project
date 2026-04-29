@@ -127,7 +127,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductId(int id)
         {
-            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,AdvertisementDate From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,AdvertisementDate,SlugUrl From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where ProductID=@productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
@@ -188,7 +188,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             }
         }
 
-        public async void UpdateProduct(UpdateProductDto productDto)
+        public async Task UpdateProduct(UpdateProductDto productDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Product Set Title=@title,ProductStatus=@productStatus where ProductID=@productID";

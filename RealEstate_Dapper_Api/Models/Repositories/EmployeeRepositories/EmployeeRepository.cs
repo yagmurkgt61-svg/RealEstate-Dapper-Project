@@ -13,7 +13,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
         {
             _context = context;
         }
-        public async void CreateEmployee(CreateEmployeeDto createEmployeeDto)
+        public async Task CreateEmployee(CreateEmployeeDto createEmployeeDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Employee (Name,Title,Mail,PhoneNumber,ImageUrl,Status) values (@name,@title,@mail,@phoneNumber,@imageUrl,@status)";
@@ -30,7 +30,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             }
         }
 
-        public async void DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Employee where EmployeeID=@employeeID";
@@ -42,7 +42,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             }
         }
 
-        public async Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
+        public async Task<List<ResultEmployeeDto>> GetAllEmployee()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Employee";
@@ -67,7 +67,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.EmployeeRepositories
             }
         }
 
-        public async void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        public async Task UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl,Status=@status Where EmployeeID=@employeeId";

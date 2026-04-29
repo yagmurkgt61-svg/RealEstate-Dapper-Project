@@ -12,7 +12,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             _context = context;
         }
    
-        public async void CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
+        public async Task CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into BottomGrid (Icon,Title,Description) values (@icon,@title,@description)";
@@ -26,7 +26,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             }
         }
 
-        public async void DeleteBottomGrid(int id)
+        public async Task DeleteBottomGrid(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From BottomGrid where BottomGridID=@bottomGridID";
@@ -38,7 +38,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             }
         }
 
-        public async Task<List<ResultBottomGridDto>> GetAllBottomGridAsync()
+        public async Task<List<ResultBottomGridDto>> GetAllBottomGrid()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From BottomGrid";
@@ -63,7 +63,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.BottomGridRepositories
             }
         }
 
-        public async void UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
+        public async Task UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update BottomGrid Set Icon=@icon,Title=@title, Description=@description where BottomGridID=@bottomGridID";

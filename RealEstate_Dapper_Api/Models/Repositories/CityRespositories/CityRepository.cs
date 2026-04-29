@@ -14,7 +14,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CityRespositories
             _context = context;
         }
 
-        public async Task<List<ResultCityDto>> GetAllCityAsync()
+        public async Task<List<ResultCityDto>> GetAllCity()
         {
             string query = "Select * From City";
             using (var connection = _context.CreateConnection())

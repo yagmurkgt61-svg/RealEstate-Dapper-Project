@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             _context = context;
         }
 
-        public async void CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
+        public async Task CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into PopularLocation (CityName,ImageUrl) values (@cityName,@imageUrl)";
@@ -28,7 +28,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             }
         }
         // tabloda belirlediğim id'ye sahip kaydı silen sorgu
-        public async void DeletePopularLocation(int id)
+        public async Task DeletePopularLocation(int id)
         {
             string query = "Delete From PopularLocation where LocationID=@locationID";
             var parameters = new DynamicParameters();
@@ -39,7 +39,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             }
         }
 
-        public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
+        public async Task<List<ResultPopularLocationDto>> GetAllPopularLocation()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From PopularLocation";
@@ -63,7 +63,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.PopularLocacitonRepositories
             }
         }
 
-        public async void UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
+        public async Task UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl where LocationID=@locationID";

@@ -6,6 +6,6 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CityRespositories
 {
     public interface ICityRepository
     {
-        Task<List<ResultCityDto>> GetAllCityAsync();
+        Task<List<ResultCityDto>> GetAllCity();
     }
 }

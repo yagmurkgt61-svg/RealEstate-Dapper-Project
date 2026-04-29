@@ -13,7 +13,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
         {
             _context = context;
         }
-        public async void CreateService(CreateServiceDto createServiceDto)
+        public async Task CreateService(CreateServiceDto createServiceDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Service (ServiceName,ServiceStatus) values (@serviceName,@serviceStatus)";
@@ -26,7 +26,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             }
         }
 
-        public async void DeleteService(int id)
+        public async Task DeleteService(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Service where ServiceID=@ServiceID";
@@ -38,7 +38,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             }
         }
 
-        public async Task<List<ResultServiceDto>> GetAllServiceAsync()
+        public async Task<List<ResultServiceDto>> GetAllService()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Service";
@@ -63,7 +63,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ServiceRepository
             }
         }
 
-        public async void UpdateService(UpdateServiceDto updateServiceDto)
+        public async Task UpdateService(UpdateServiceDto updateServiceDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Service Set ServiceName=@serviceName,ServiceStatus=@serviceStatus where ServiceID=@serviceID";

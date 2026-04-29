@@ -17,7 +17,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> CityList()
         {
-            var values = await _cityRepository.GetAllCityAsync();
+            var values = await _cityRepository.GetAllCity();
             return Ok(values);
         }
     }

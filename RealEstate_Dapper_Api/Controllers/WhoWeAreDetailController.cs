@@ -21,7 +21,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> WhoWeAreDetailList()
         {
-            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetailAsync();
+            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetail();
             return Ok(values);
         }
         [HttpPost]

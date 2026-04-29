@@ -13,7 +13,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
             _context = context;
         }
 
-        public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
+        public async Task CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into WhoWeAreDetail (Title,Subtitle,Description1,Description2) values (@title,@subTitle,@description1,@description2)";
@@ -28,7 +28,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
             }
         }
 
-        public async void DeleteWhoWeAreDetail(int id)
+        public async Task DeleteWhoWeAreDetail(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From WhoWeAreDetail where WhoWeAreDetailID=@whoWeAreDetailID";
@@ -40,7 +40,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
             }
         }
 
-        public async Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetailAsync()
+        public async Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetail()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From WhoWeAreDetail";
@@ -65,7 +65,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository
             }
         }
 
-        public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
+        public async Task UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";

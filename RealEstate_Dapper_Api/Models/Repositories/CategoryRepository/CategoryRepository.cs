@@ -14,7 +14,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             _context = context;
         }
 
-        public async void CreateCategory(CreateCategoryDto CategoryDto)
+        public async Task CreateCategory(CreateCategoryDto CategoryDto)
         {
             // tabloda belirlediğim alanlar için yeni bir kayıt ekleyen sorgu
             string query = "Insert Into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
@@ -27,7 +27,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             }
         }
 
-        public async void DeleteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
             // tabloda belirlediğim id'ye sahip kaydı silen sorgu
             string query = "Delete From Category where CategoryID=@categoryID";
@@ -39,7 +39,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             }   
         }
 
-        public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
+        public async Task<List<ResultCategoryDto>> GetAllCategory()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From Category";
@@ -64,7 +64,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoryRepository
             }
         }
 
-        public async void UpdateCategory(UpdateCategoryDto categoryDto)
+        public async Task UpdateCategory(UpdateCategoryDto categoryDto)
         {
             // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";

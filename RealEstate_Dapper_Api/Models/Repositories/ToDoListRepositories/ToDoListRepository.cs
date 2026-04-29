@@ -11,17 +11,17 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories
         {
             _context = context;
         }
-        public void CreateToDoList(CreateToDoListDto toDoListDto)
+        public Task CreateToDoList(CreateToDoListDto toDoListDto)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteToDoList(int id)
+        public Task DeleteToDoList(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<ResultToDoListDto>> GetAllToDoListAsync()
+        public async Task<List<ResultToDoListDto>> GetAllToDoList()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
             string query = "Select * From ToDoList";
@@ -38,7 +38,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories
             throw new NotImplementedException();
         }
 
-        public void UpdateToDoList(UpdateToDoListDto toDoListDto)
+        public Task UpdateToDoList(UpdateToDoListDto toDoListDto)
         {
             throw new NotImplementedException();
         }
