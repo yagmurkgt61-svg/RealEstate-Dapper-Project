@@ -98,5 +98,24 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _productRepository.GetLast3ProductAsync();
             return Ok(values);
         }
+        [HttpGet("ProductStatusChangeToPassive/{id}")]
+        public async Task<IActionResult> ProductStatusChangeToPassive(int id)
+        {
+            _productRepository.ProductStatusChangeToPassive(id);
+            return Ok("İlan Pasif Yapıldı");
+        }
+
+        [HttpGet("ProductStatusChangeToActive/{id}")]
+        public async Task<IActionResult> ProductStatusChangeToActive(int id)
+        {
+            _productRepository.ProductStatusChangeToActive(id);
+            return Ok("İlan Aktif Yapıldı");
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _productRepository.DeleteProduct(id);
+            return Ok("İlan Başarıyla Silindi");
+        }
     }
 }

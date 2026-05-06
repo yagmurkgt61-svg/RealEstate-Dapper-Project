@@ -27,23 +27,7 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-        [HttpGet]
-        public async Task<IActionResult> CreateProduct()
-        {
-            var client = _httpClientFactory.CreateClient("RealEstateClient");
-            var responseMessage = await client.GetAsync("/api/Categories");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
-            List<SelectListItem> categoryValues = (from x in values.ToList()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.CategoryName,
-                                                       Value = x.CategoryID.ToString()
-                                                   }).ToList();
-            ViewBag.v = categoryValues;
-            return View();
-
-        }
+     
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
@@ -76,6 +60,44 @@ namespace RealEstate_Dapper_UI.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateProduct()
+        {
+            await GetCategoriesToViewBag();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var jsonData = JsonConvert.SerializeObject(createProductDto);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("/api/Products", content);
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            await GetCategoriesToViewBag();
+            return View(createProductDto);
+        }
+
+        private async Task GetCategoriesToViewBag()
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync("/api/Categories"); // Kategori API'n
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+
+            List<SelectListItem> categoryValues = (from x in values
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.v = categoryValues;
         }
     }
 }

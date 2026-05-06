@@ -18,6 +18,10 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task CreateProduct(CreateProductDto createProductDto)
         {
+            createProductDto.AdvertisementDate = DateTime.Now;
+            createProductDto.CityId = 1;
+            createProductDto.AppUserId = 1;
+            createProductDto.ProductStatus = true;
             string query = "Insert Into Product (Title,Price,CityId,CityName,District,CoverImage,Adress,Description,Type,DealOfTheDay,ProductStatus,AdvertisementDate,ProductCategory,AppUserId) values (@Title,@Price,@CityId,@CityName,@District,@CoverImage,@Adress,@Description,@Type,@DealOfTheDay,@ProductStatus,@AdvertisementDate,@ProductCategory,@AppUserId)";
             var parameters = new DynamicParameters();
             parameters.Add("@Title", createProductDto.Title);
@@ -55,7 +59,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
             // tabloda bulunan tüm kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay,SlugUrl From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID"; 
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
@@ -88,9 +92,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsyncByFalse(int id)
         {
             // tabloda bulunan ve EmployeeID'si belirlediğim id'ye eşit olan ve ProductStatus'ü false olan kayıtları Category tablosu ile ilişkilendirerek listeleyen sorgu
-            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AapUserId and ProductStatus=0";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CategoryName,CoverImage,Type,Adress,DealOfTheDay From Product LEFT JOIN Category on Product.ProductCategory=Category.CategoryID where AppUserId=@AppUserId and ProductStatus=0";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeID", id);
+            parameters.Add("@AppUserId", id);
             using (var connection = _context.CreateConnection())
             {   
                 var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query, parameters);
@@ -195,10 +199,41 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
             var parameters = new DynamicParameters();
             parameters.Add("@title", productDto.Title);
             parameters.Add("@productStatus", productDto.ProductStatus);
-            parameters.Add("@ProductID", productDto.ProductStatus);
-            using (var connectiont = _context.CreateConnection())
+            parameters.Add("@productID", productDto.ProductID);
+            using (var connection = _context.CreateConnection())
             {
-                await connectiont.ExecuteAsync(query, parameters);
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+        public async Task ProductStatusChangeToPassive(int id)
+        {
+            string query = "Update Product Set ProductStatus=0 where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
+        public async Task ProductStatusChangeToActive(int id)
+        {
+            string query = "Update Product Set ProductStatus=1 where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+        public async Task DeleteProduct(int id)
+        {
+            string query = "Delete From Product Where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }

@@ -13,6 +13,7 @@
         public string CoverImage { get; set; }
         public string Type { get; set; }
         public string Adress { get; set; }
+        public string SlugUrl { get; set; }
         public bool DealOfTheDay { get; set; }
     }
 }

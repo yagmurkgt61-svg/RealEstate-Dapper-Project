@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
 }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
 <div class="col-12">  
@@ -26,7 +28,9 @@
                                     <th scope="row">@item.CategoryID</th>
                                     <td>@item.CategoryName</td>
                                     <td>@item.CategoryStatus</td>
-                                    <td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td>
+                                        <button onclick="deleteCategory(@item.CategoryID)" class="btn btn-outline-danger">Sil</button>
+                                    </td>
                                     <td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-outline-success">Güncelle</a></td>
                                 </tr>
                             }
@@ -38,3 +42,23 @@
 </div>
 </div>
 </div>
+
+<script>
+    function deleteCategory(id) {
+    Swal.fire({
+    title: 'Emin misiniz?',
+    text: "Bu kategoriyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Evet, Sil!',
+    cancelButtonText: 'Vazgeç'
+    }).then((result) => {
+    if (result.isConfirmed) {
+    // Onay verilirse ilgili Controller Action'ına yönlendiriyoruz
+    window.location.href = "/Category/DeleteCategory/" + id;
+    }
+    })
+    }
+</script>

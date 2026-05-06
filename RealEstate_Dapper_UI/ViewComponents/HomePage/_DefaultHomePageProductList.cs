@@ -21,7 +21,8 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                return View(values);
+                var limitedValues = values.Take(6).ToList();
+                return View(limitedValues);
             }
             return View(new List<ResultProductDto>());
         }

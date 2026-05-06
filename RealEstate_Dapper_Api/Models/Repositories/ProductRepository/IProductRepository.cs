@@ -20,5 +20,8 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         Task UpdateProduct(UpdateProductDto productDto);
         Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue,int propertyCategoryId,string city);
         Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayTrueWithCategoryAsync();
+        Task ProductStatusChangeToPassive(int id);
+        Task ProductStatusChangeToActive(int id);
+        Task DeleteProduct(int id);
     }
 }

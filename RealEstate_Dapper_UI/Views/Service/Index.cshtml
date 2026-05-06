@@ -4,6 +4,7 @@
     Layout = "~/Views/Admin/Index.cshtml";
     int count = 0;
 }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
@@ -29,7 +30,9 @@
                                     <th scope="row">@count</th>
                                     <td>@item.ServiceName</td>
                                     <td>@item.ServiceStatus</td>
-                                    <td><a href="/Service/DeleteService/@item.ServiceID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td>
+                                        <button onclick="deleteService(@item.ServiceID)" class="btn btn-outline-danger">Sil</button>
+                                    </td>
                                     <td><a href="/Service/UpdateService/@item.ServiceID" class="btn btn-outline-success">Güncelle</a></td>
                                 </tr>
                             }
@@ -42,3 +45,22 @@
     </div>
 </div>
 
+<script>
+    function deleteService(id) {
+    Swal.fire({
+    title: 'Emin misiniz?',
+    text: "Bu hizmeti silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Evet, Sil!',
+    cancelButtonText: 'Vazgeç'
+    }).then((result) => {
+    if (result.isConfirmed) {
+    // Service Controller altındaki DeleteService metoduna yönlendirir
+    window.location.href = "/Service/DeleteService/" + id;
+    }
+    })
+    }
+</script>

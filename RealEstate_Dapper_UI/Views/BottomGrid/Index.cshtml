@@ -4,7 +4,7 @@
     Layout = "~/Views/Admin/Index.cshtml";
     int count = 0;
 }
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
@@ -27,7 +27,9 @@
                                 <tr>
                                     <th scope="row">@count</th>
                                     <td>@item.Title</td>
-                                    <td><a href="/BottomGrid/DeleteBottomGrid/@item.BottomGridID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td>
+                                        <button onclick="deleteBottomGrid(@item.BottomGridID)" class="btn btn-outline-danger">Sil</button>
+                                    </td>
                                     <td><a href="/BottomGrid/UpdateBottomGrid/@item.BottomGridID" class="btn btn-outline-success">Güncelle</a></td>
                                 </tr>
                             }
@@ -40,3 +42,21 @@
     </div>
 </div>
 
+<script>
+    function deleteBottomGrid(id) {
+    Swal.fire({
+    title: 'Emin misiniz?',
+    text: "Bu alanı silmek istediğinize emin misiniz? Bu işlem geri alınamaz!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Evet, Sil!',
+    cancelButtonText: 'Vazgeç'
+    }).then((result) => {
+    if (result.isConfirmed) {
+    window.location.href = "/BottomGrid/DeleteBottomGrid/" + id;
+    }
+    })
+    }
+</script>
