@@ -131,5 +131,42 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
 
             ViewBag.v = categoryValues;
         }
+        [HttpGet]
+        public async Task<IActionResult> UpdateAdvert(int id)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync($"/api/Products/GetProductByProductId/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
+
+                await LoadCategoryDropdown();
+                return View(values);
+            }
+
+            return RedirectToAction("ActiveAdverts");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateAdvert(UpdateProductDto updateProductDto)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+
+            var jsonData = JsonConvert.SerializeObject(updateProductDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var responseMessage = await client.PutAsync("/api/Products/UpdateProduct", stringContent);
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ActiveAdverts");
+            }
+
+            await LoadCategoryDropdown();
+            return View(updateProductDto);
+        }
+
     }
 }

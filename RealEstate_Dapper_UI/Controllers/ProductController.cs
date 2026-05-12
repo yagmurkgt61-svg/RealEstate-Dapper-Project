@@ -27,19 +27,39 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-     
+        [HttpGet]
+        public async Task<IActionResult> UpdateProduct(int id)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync($"/api/Products/GetProductByProductId/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
+                await GetCategoriesToViewBag();
+                return View(values);
+            }
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
             var client = _httpClientFactory.CreateClient("RealEstateClient");
             var jsonData = JsonConvert.SerializeObject(updateProductDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("/api/Categories", stringContent);
+            StringContent stringContent =
+                new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage =
+                await client.PutAsync("/api/Products/UpdateProduct", stringContent);
+            var responseContent = await responseMessage.Content.ReadAsStringAsync();
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
-            return View();
+
+            ViewBag.Error = responseContent;
+
+            return View(updateProductDto);
         }
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
         {
@@ -87,7 +107,7 @@ namespace RealEstate_Dapper_UI.Controllers
         private async Task GetCategoriesToViewBag()
         {
             var client = _httpClientFactory.CreateClient("RealEstateClient");
-            var responseMessage = await client.GetAsync("/api/Categories"); // Kategori API'n
+            var responseMessage = await client.GetAsync("/api/Categories"); 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
 
@@ -98,6 +118,29 @@ namespace RealEstate_Dapper_UI.Controllers
                                                        Value = x.CategoryID.ToString()
                                                    }).ToList();
             ViewBag.v = categoryValues;
+        }
+        public async Task<IActionResult> ProductDetail(int id)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            var responseMessage = await client.GetAsync($"/api/ProductDetails/GetProductDetailByProductId?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<GetProductByProductIdDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var client = _httpClientFactory.CreateClient("RealEstateClient");
+            // API tarafındaki ProductsController'da Delete metodu [HttpDelete("{id}")] olarak tanımlı
+            var responseMessage = await client.DeleteAsync($"/api/Products/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

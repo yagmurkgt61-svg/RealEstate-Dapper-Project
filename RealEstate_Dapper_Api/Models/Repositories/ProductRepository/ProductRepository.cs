@@ -180,9 +180,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string cityName)
         {
 
-            string query = "Select * From Product Where Title like '%" + @searchKeyValue + "%'and ProductCategory=@propertyCategoryId and CityName=@cityName";
+            string query = "Select ProductID,Title,Price,CityId,CityName,District,CoverImage,Type,Adress,DealOfTheDay,SlugUrl From Product Where Title like @searchKeyValue and ProductCategory=@propertyCategoryId and CityName=@cityName";
             var parameters = new DynamicParameters();
-            parameters.Add("@searchKeyValue", searchKeyValue);
+            parameters.Add("@searchKeyValue", "%" + searchKeyValue + "%");
             parameters.Add("@propertyCategoryId", propertyCategoryId);
             parameters.Add("@cityName", cityName);
             using (var connection = _context.CreateConnection())
@@ -194,14 +194,26 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task UpdateProduct(UpdateProductDto productDto)
         {
-            // tabloda belirlediğim id'ye sahip kaydı güncelleyen sorgu
-            string query = "Update Product Set Title=@title,ProductStatus=@productStatus where ProductID=@productID";
+            // DTO'daki tüm alanları kapsayan SQL sorgusu
+            string query = "Update Product Set Title=@title, Price=@price, CityID=@cityId, CityName=@cityName, District=@district, " +
+                           "CoverImage=@coverImage, Type=@type, Adress=@adress where ProductID=@productID";
+
             var parameters = new DynamicParameters();
+
+            // Parametreleri DTO'daki isimlerle birebir eşleştiriyoruz
             parameters.Add("@title", productDto.Title);
-            parameters.Add("@productStatus", productDto.ProductStatus);
+            parameters.Add("@price", productDto.Price);
+            parameters.Add("@cityId", productDto.CityId);
+            parameters.Add("@cityName", productDto.CityName);
+            parameters.Add("@district", productDto.District);
+            parameters.Add("@coverImage", productDto.CoverImage);
+            parameters.Add("@type", productDto.Type);
+            parameters.Add("@adress", productDto.Adress);
             parameters.Add("@productID", productDto.ProductID);
+
             using (var connection = _context.CreateConnection())
             {
+                // Await kullanarak asenkron işlemi tamamlıyoruz
                 await connection.ExecuteAsync(query, parameters);
             }
         }

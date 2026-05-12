@@ -50,9 +50,18 @@ namespace RealEstate_Dapper_UI.Controllers
         {
             ViewBag.i = id;
             var client = _httpClientFactory.CreateClient("RealEstateClient");
-            var responseMessage = await client.GetAsync("/api/Products/GetProductByProductId?id="+id);
+            var responseMessage = await client.GetAsync("/api/Products/GetProductByProductId/" + id);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                return NotFound();
+            }
+
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<ResultProductDto>(jsonData);
+            if (values == null || values.productID == 0)
+            {
+                return NotFound();
+            }
 
             var client2 = _httpClientFactory.CreateClient("RealEstateClient");
             var responseMessage2 = await client2.GetAsync("/api/ProductDetails/GetProductDetailByProductId?id=" + id);
@@ -68,15 +77,15 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.type = values.type; 
             ViewBag.description = values.description;
             ViewBag.slugUrl = values.SlugUrl;
-            ViewBag.bathCount = values2.bathCount;
-            ViewBag.bedCount = values2.bedRoomCount;
-            ViewBag.size = values2.productSize;
-            ViewBag.roomCount = values2.roomCount;
-            ViewBag.garageCount = values2.garageSize;
-            ViewBag.buildYear = values2.buildYear;
+            ViewBag.bathCount = values2?.bathCount ?? 0;
+            ViewBag.bedCount = values2?.bedRoomCount ?? 0;
+            ViewBag.size = values2?.productSize ?? 0;
+            ViewBag.roomCount = values2?.roomCount ?? 0;
+            ViewBag.garageCount = values2?.garageSize ?? 0;
+            ViewBag.buildYear = values2?.buildYear;
             ViewBag.date = values.AdvertisementDate;
-            ViewBag.location = values2.location;
-            ViewBag.videoUrl = values2.videoUrl;
+            ViewBag.location = values2?.location;
+            ViewBag.videoUrl = values2?.videoUrl;
 
             DateTime date1=DateTime.Now;
             DateTime date2=values.AdvertisementDate;

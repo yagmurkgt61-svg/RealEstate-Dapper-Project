@@ -41,8 +41,18 @@
                                         <button onclick="deleteAdvert(@item.productID)" class="btn btn-outline-danger">Sil</button>
                                     </td>
                                     <td><a href="/EstateAgent/MyAdverts/ChangeStatusToPassive/@item.productID" class="btn btn-outline-secondary">Pasif Yap</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-primary">Sitede Gör</a></td>
+                                   <td> <a asp-area="EstateAgent"
+                                           asp-controller="MyAdverts"
+                                           asp-action="UpdateAdvert"
+                                           asp-route-id="@item.productID"
+                                           class="btn btn-outline-success">
+                                        Güncelle
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("PropertySingle", "Property", new { area = "", slug = (item.title ?? "ilan").ToLower().Replace(" ", "-"), id = item.productID })"
+                                           class="btn btn-outline-primary">Sitede Gör</a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
