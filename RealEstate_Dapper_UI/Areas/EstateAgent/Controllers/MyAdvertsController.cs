@@ -80,7 +80,7 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ActiveAdverts"); // 🔥 BURASI ÖNEMLİ
+                return RedirectToAction("ActiveAdverts"); 
             }
         
             await LoadCategoryDropdown();

@@ -58,7 +58,6 @@ namespace RealEstate_Dapper_UI.Controllers
             }
 
             ViewBag.Error = responseContent;
-
             return View(updateProductDto);
         }
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
@@ -134,13 +133,12 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var client = _httpClientFactory.CreateClient("RealEstateClient");
-            // API tarafındaki ProductsController'da Delete metodu [HttpDelete("{id}")] olarak tanımlı
             var responseMessage = await client.DeleteAsync($"/api/Products/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            return View("Index");
         }
     }
 }

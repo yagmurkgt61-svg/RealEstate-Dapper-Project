@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\Repositories\NewFolder\**" />
-    <Content Remove="Models\Repositories\NewFolder\**" />
-    <EmbeddedResource Remove="Models\Repositories\NewFolder\**" />
-    <None Remove="Models\Repositories\NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />

@@ -28,7 +28,6 @@ namespace RealEstate_Dapper_Api.Controllers
             await _productRepository.UpdateProduct(updateProductDto);
             return Ok("İlan Başarılı Bir Şekilde Güncellendi");
         }
-
         [HttpGet("ProductListWithCategory")]
         public async Task<IActionResult> ProductListWithCategory()
         {
@@ -72,7 +71,6 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             await _productRepository.CreateProduct(createProductDto);
             return Ok("İlan başarıyla eklendi");
-
         }
         [HttpGet("GetProductByProductId/{id}")]
         public async Task<IActionResult> GetProductByProductId(int id)

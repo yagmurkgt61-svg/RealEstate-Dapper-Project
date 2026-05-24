@@ -194,13 +194,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
         public async Task UpdateProduct(UpdateProductDto productDto)
         {
-            // DTO'daki tüm alanları kapsayan SQL sorgusu
             string query = "Update Product Set Title=@title, Price=@price, CityID=@cityId, CityName=@cityName, District=@district, " +
                            "CoverImage=@coverImage, Type=@type, Adress=@adress where ProductID=@productID";
-
             var parameters = new DynamicParameters();
-
-            // Parametreleri DTO'daki isimlerle birebir eşleştiriyoruz
             parameters.Add("@title", productDto.Title);
             parameters.Add("@price", productDto.Price);
             parameters.Add("@cityId", productDto.CityId);
@@ -213,7 +209,6 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
 
             using (var connection = _context.CreateConnection())
             {
-                // Await kullanarak asenkron işlemi tamamlıyoruz
                 await connection.ExecuteAsync(query, parameters);
             }
         }
@@ -240,9 +235,9 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductRepository
         }
         public async Task DeleteProduct(int id)
         {
-            string query = "Delete From Product Where ProductID=@productID";
+            string query = "DELETE FROM ProductDetails WHERE ProductID = @id; DELETE FROM Product WHERE ProductID = @id;";
             var parameters = new DynamicParameters();
-            parameters.Add("@productID", id);
+            parameters.Add("@id", id);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
