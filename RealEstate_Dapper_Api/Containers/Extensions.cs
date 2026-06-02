@@ -20,6 +20,7 @@ using RealEstate_Dapper_Api.Models.Repositories.TestimonialRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.ToDoListRepositories;
 using RealEstate_Dapper_Api.Models.Repositories.WhoWeAreRepository;
 using RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories;
+using RealEstate_Dapper_Api.Models.Repositories.CategoriesRepositories;
 
 namespace RealEstate_Dapper_Api.Containers
 {
@@ -50,6 +51,7 @@ namespace RealEstate_Dapper_Api.Containers
             services.AddTransient<ICityRepository, CityRepository>();
             services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
             services.AddTransient<IProductsdbRepository, ProductsdbRepository>();
+            services.AddTransient<ICategoriesRepository, CategoriesRepository>();
         }
     }
 }

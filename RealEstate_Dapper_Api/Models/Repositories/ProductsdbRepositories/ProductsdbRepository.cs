@@ -30,7 +30,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories
         public async Task<List<ResultProductsdbDto>> GetAllProductsdbAsync()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
-            string query = "Select * From Productsdb";
+            string query = "select P.ProductID,P.ProductName,P.CategoryID,C.CategoryName,P.UnitInStock,P.Price,P.PriceVat from Productsdb P inner join Categoriesdb C on P.CategoryID = C.CategoryID";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductsdbDto>(query);
@@ -63,6 +63,17 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories
             {
                 var values = await connection.QueryAsync<GetProductsdbByProductIdDto>(query, parameters);
                 return values.FirstOrDefault();
+            }
+        }
+
+        public async Task DeleteProductsdb(int id)
+        {
+            string query = "Delete From Productsdb where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }

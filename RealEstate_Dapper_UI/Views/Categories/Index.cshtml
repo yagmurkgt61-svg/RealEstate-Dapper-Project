@@ -1,0 +1,157 @@
+﻿@using RealEstate_Dapper_UI.Dtos.CategoriesdbDtos
+@model List<ResultCategoriesdbDto>
+@{
+    ViewData["Title"] = "Kategori Listesi";
+    Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
+}
+
+<style>
+    /* Özelleştirilmiş Koyu Tema Pop-up (Modal) CSS Düzenlemeleri */
+    .custom-modal {
+        display: none; 
+        position: fixed; 
+        z-index: 9999; 
+        padding-top: 150px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        background-color: rgba(0,0,0,0.7); 
+        backdrop-filter: blur(3px); /* Arka planı hafifçe bulandırır */
+    }
+
+    .custom-modal-content {
+        background-color: #1e1e2d; /* Projenizin koyu temasıyla uyumlu renk */
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #333;
+        width: 400px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        animation: animatetop 0.3s;
+    }
+
+    @@keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    .modal-title {
+        color: #ffffff;
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    .modal-text {
+        color: #a1a5b7;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+</style>
+
+<div style="margin-bottom: 20px;">
+    <a href="/Categories/CreateCategories" class="dt-btn dt-btn-success">
+        ➕ Yeni Kategori Ekle
+    </a>
+</div>
+
+<table id="categoryTable" class="display dark" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>Aktif Mi?</th>
+            <th>Sıra</th>
+            <th style="text-align: center; width: 80px;">Sil</th>
+            <th style="text-align: center; width: 100px;">Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+                <td>@(item.IsActive ? "Aktif" : "Pasif")</td>
+                <td>@item.Order</td>
+                <td style="text-align: center;">
+                    <button type="button" class="dt-btn dt-btn-danger" onclick="openDeleteModal(@item.CategoryID, '@item.CategoryName')">
+                        Sil
+                    </button>
+                </td>
+                <td style="text-align: center;">
+                    <a href="/Categories/UpdateCategories?id=@item.CategoryID" class="dt-btn dt-btn-warning">
+                        Güncelle
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="deleteModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <h3 class="modal-title">🚨 Kategoriyi Sil</h3>
+        <p class="modal-text">"<span id="modalCategoryName" style="color: #f1416c; font-weight: bold;"></span>" kategorisini silmek istediğinize emin misiniz?</p>
+        <div class="modal-buttons">
+            <a id="confirmDeleteBtn" href="#" class="dt-btn dt-btn-danger" style="padding: 10px 20px;">Evet, Sil</a>
+            <button type="button" class="dt-btn" style="background-color: #444; color: #fff; padding: 10px 20px;" onclick="closeDeleteModal()">İptal Et</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#categoryTable').DataTable({
+                pageLength: 10,
+                columnDefs: [
+                    { orderable: false, targets: [4, 5] }
+                ],
+                language: {
+                    search: "Aramak:",
+                    lengthMenu: "_MENU_ &nbsp;sayfa başına girişler",
+                    info: "Gösteriliyor _START_ ile _END_ arası toplam _TOTAL_ giriş",
+                    infoEmpty: "Kayıt yok",
+                    zeroRecords: "Eşleşen kayıt bulunamadı",
+                    paginate: {
+                        next: "»",
+                        previous: "«"
+                    }
+                }
+            });
+        });
+
+        // Pop-up'ı Açan Fonksiyon
+        function openDeleteModal(id, categoryName) {
+            // Silinecek kategorinin adını pop-up içine yazdırıyoruz
+            document.getElementById("modalCategoryName").innerText = categoryName;
+            
+            // "Evet, Sil" butonunun href linkini dinamik olarak o ID'ye yönlendiriyoruz
+            document.getElementById("confirmDeleteBtn").href = "/Categories/DeleteCategories?id=" + id;
+            
+            // Pop-up'ı görünür yapıyoruz
+            document.getElementById("deleteModal").style.display = "block";
+        }
+
+        // Pop-up'ı Kapatan Fonksiyon
+        function closeDeleteModal() {
+            document.getElementById("deleteModal").style.display = "none";
+        }
+
+        // Kullanıcı pop-up dışındaki boş bir yere basarsa da pop-up kapansın
+        window.onclick = function(event) {
+            var modal = document.getElementById("deleteModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+}

@@ -34,11 +34,18 @@ namespace RealEstate_Dapper_Api.Controllers
             await _productsdbRepository.CreateProductsdb(createProductsdbDto);
             return Ok("Ürün başarıyla eklendi");
         }
-        [HttpGet("GetProductByProductId/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProductsdbByProductId(int id)
         {
             var values = await _productsdbRepository.GetProductsdbByProductId(id);
             return Ok(values);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProductsdb(int id)
+        {
+            await _productsdbRepository.DeleteProductsdb(id);
+            return Ok("Ürün Başarılı Bir Şekilde Silindi");
         }
     }
 }

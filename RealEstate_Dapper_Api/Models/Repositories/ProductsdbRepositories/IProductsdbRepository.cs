@@ -1,4 +1,4 @@
-﻿using RealEstate_Dapper_Api.Dtos.ProductDtos;
+﻿using RealEstate_Dapper_Api.Dtos.CategoriesdbDtos;
 using RealEstate_Dapper_Api.Dtos.ProductsdbDtos;
 
 namespace RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories
@@ -9,5 +9,6 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories
         Task CreateProductsdb(CreateProductsdbDto createProductsdbDto);
         Task UpdateProductsdb(UpdateProductsdbDto updateProductsdbDto);
         Task<GetProductsdbByProductIdDto> GetProductsdbByProductId(int id);
+        Task DeleteProductsdb(int id);
     }
 }

@@ -1,0 +1,97 @@
+﻿@model RealEstate_Dapper_UI.Dtos.ProductsdbDtos.UpdateProductsdbDto
+
+@{
+    ViewData["Title"] = "Ürün Güncelle";
+    Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
+}
+
+<h2 style="margin-top: 0; margin-bottom: 25px; color: #ffffff;">🔄 Ürün Güncelle</h2>
+
+<form action="/Productsdb/UpdateProductsdb" method="post">
+
+    <input type="hidden" name="ProductID" value="@Model?.ProductID" />
+
+    <div class="dt-form-group" style="margin-bottom: 20px;">
+        <label for="ProductName" style="color: #a1a5b7; display: block; margin-bottom: 8px;">Ürün Adı</label>
+        <input type="text"
+               id="ProductName"
+               name="ProductName"
+               value="@Model?.ProductName"
+               class="dt-input"
+               style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px;"
+               required />
+    </div>
+
+    <div class="dt-form-group" style="margin-bottom: 20px;">
+        <label for="CategoryID" style="color: #a1a5b7; display: block; margin-bottom: 8px;">Ürün Kategorisi</label>
+        <select id="CategoryID"
+                name="CategoryID"
+                class="dt-input"
+                style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px; cursor: pointer;"
+                required>
+            <option value="" disabled>-- Kategori Seçiniz --</option>
+            @if (ViewBag.CategoryList != null)
+            {
+                @foreach (var item in ViewBag.CategoryList as List<SelectListItem>)
+                {
+                    if (Model != null && item.Value == Model.CategoryID.ToString())
+                    {
+                        <option value="@item.Value" selected="selected">@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+
+    <div class="dt-form-group" style="margin-bottom: 20px;">
+        <label for="UnitInStock" style="color: #a1a5b7; display: block; margin-bottom: 8px;">Stok Miktarı</label>
+        <input type="number"
+               id="UnitInStock"
+               name="UnitInStock"
+               value="@Model?.UnitInStock"
+               class="dt-input"
+               min="0"
+               style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px;"
+               required />
+    </div>
+
+    <div class="dt-form-group" style="margin-bottom: 20px;">
+        <label for="Price" style="color: #a1a5b7; display: block; margin-bottom: 8px;">Ürün Fiyatı (KDV'siz)</label>
+        <input type="number"
+               id="Price"
+               name="Price"
+               value="@(Model != null ? Model.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) : "")"
+               class="dt-input"
+               step="0.01"
+               min="0"
+               style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px;"
+               required />
+    </div>
+
+    <div class="dt-form-group" style="margin-bottom: 25px;">
+        <label for="PriceVat" style="color: #a1a5b7; display: block; margin-bottom: 8px;">KDV Dahil Fiyatı</label>
+        <input type="number"
+               id="PriceVat"
+               name="PriceVat"
+               value="@(Model != null ? Model.PriceVat.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) : "")"
+               class="dt-input"
+               step="0.01"
+               min="0"
+               style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px;"
+               required />
+    </div>
+
+    <div style="margin-top: 30px; display: flex; gap: 10px;">
+        <button type="submit" class="dt-btn dt-btn-warning" style="font-size: 14px; padding: 10px 20px; cursor: pointer;">
+            🔄 Değişiklikleri Kaydet
+        </button>
+        
+        <a href="/Productsdb/Index" class="dt-btn" style="background-color: #444; color: #fff; font-size: 14px; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
+            ❌ İptal Et
+        </a>
+    </div>
+</form>

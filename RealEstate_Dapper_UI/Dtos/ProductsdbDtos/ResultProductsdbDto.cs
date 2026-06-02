@@ -1,4 +1,4 @@
-﻿namespace RealEstate_Dapper_Api.Dtos.ProductsdbDtos
+﻿namespace RealEstate_Dapper_UI.Dtos.ProductsdbDtos
 {
     public class ResultProductsdbDto
     {
