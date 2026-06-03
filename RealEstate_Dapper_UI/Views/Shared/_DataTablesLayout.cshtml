@@ -9,6 +9,7 @@
     <title>@ViewData["Title"]</title>
 
     <link href="~/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
             /* DataTables web sitesinin orijinal mavi arka plan rengi */
@@ -44,11 +45,15 @@
 
             /* Tablonun içine oturduğu o koyu renkli panel */
             .dt-demo-panel {
-                background-color: #1b1c1d;
-                border-radius: 6px;
+                background-color: rgba(27, 28, 29, 0.75) !important; /* Hafif transparan siyah */
+                backdrop-filter: blur(12px); /* Arkadaki maviyi yumuşatıp sızdıran cam efekti */
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(0, 255, 102, 0.15); /* Çok ince ve asil bir neon yeşil sınır çizgisi */
+                border-radius: 12px !important; /* Köşeleri biraz daha yumuşattık */
                 padding: 25px;
                 margin-top: 30px;
-                box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 255, 102, 0.05);
+                transition: all 0.3s ease;
             }
 
             /* Panel içindeki DataTables yazılarını ve girdilerini beyaza uyarlama */
@@ -57,68 +62,59 @@
                 font-size: 14px;
             }
 
+                /* 1. SADECE ARAMA KUTUSU (OK İŞARETİ OLMAYAN DÜZELTİLMİŞ METİN ALANI) */
                 .dt-search input {
-                    background-color: #2b2c2d !important;
+                    background-color: #141516 !important;
+                    border: 1px solid #343536 !important;
+                    border-radius: 8px !important;
+                    padding: 10px 14px !important; /* Sağdaki ok boşluğu temizlendi */
                     color: #ffffff !important;
-                    border: 1px solid #444 !important;
-                    border-radius: 4px;
-                    padding: 5px 10px;
-                    margin-left: 8px;
+                    font-weight: 500;
+                    font-size: 13px !important;
+                    letter-spacing: 0.5px;
+                    background-image: none !important; /* Ok işareti tamamen kaldırıldı */
+                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+                    transition: all 0.25s ease !important;
                 }
 
-                .dt-length select {
-                    background-color: #2b2c2d !important;
-                    color: #ffffff !important;
-                    border: 1px solid #444 !important;
-                    border-radius: 4px;
-                    padding: 3px;
-                }
-            /* Ortak Buton Tasarımı */
+                    .dt-search input:focus {
+                        border-color: #00ff66 !important;
+                        box-shadow: 0 0 12px rgba(0, 255, 102, 0.35) !important;
+                        outline: none !important;
+                    }
+
+            /* Genel Buton Güncellemesi */
             .dt-btn {
-                display: inline-block;
-                padding: 6px 14px;
-                font-size: 13px;
-                font-weight: 600;
-                line-height: 1.42857143;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: middle;
-                cursor: pointer;
-                border: none;
-                border-radius: 4px;
-                text-decoration: none;
-                transition: all 0.2s ease;
+                border-radius: 6px !important;
+                padding: 8px 16px !important;
+                font-size: 12px !important;
+                letter-spacing: 0.5px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
             }
 
-            /* Yeni Kategori Ekle (Yeşil Buton) */
-            .dt-btn-success {
-                background-color: #28a745;
-                color: #ffffff !important;
-            }
-
-                .dt-btn-success:hover {
-                    background-color: #218838;
-                }
-
-            /* Sil (Kırmızı Buton) */
+            /* Sil Butonu (Hover olunca parlar) */
             .dt-btn-danger {
-                background-color: #cb2431;
-                color: #ffffff !important;
+                background-color: #cb2431 !important;
             }
 
                 .dt-btn-danger:hover {
-                    background-color: #b11f2a;
+                    background-color: #ff3344 !important;
+                    box-shadow: 0 0 12px rgba(255, 51, 68, 0.4);
+                    transform: translateY(-1px);
                 }
 
-            /* Güncelle (Turuncu/Sarı Buton) */
+            /* Güncelle Butonu (Hover olunca parlar) */
             .dt-btn-warning {
-                background-color: #e09400;
-                color: #ffffff !important;
+                background-color: #e09400 !important;
             }
 
                 .dt-btn-warning:hover {
-                    background-color: #c48200;
+                    background-color: #ffaa00 !important;
+                    box-shadow: 0 0 12px rgba(255, 170, 0, 0.4);
+                    transform: translateY(-1px);
                 }
+
             /* Form Alanı Düzeni */
             .dt-form-group {
                 margin-bottom: 20px;
@@ -164,20 +160,167 @@
                 height: 18px;
                 cursor: pointer;
             }
+
+            /* Tablo genel hatları */
+            #productsdbTable, table.dataTable {
+                border-collapse: separate !important;
+                border-spacing: 0 6px !important; /* Satırların arasını biraz açarak nefes aldırıyoruz */
+            }
+
+                /* Her bir satırın arka planı */
+                table.dataTable tbody tr {
+                    background-color: rgba(43, 44, 45, 0.4) !important;
+                    transition: all 0.25s ease !important;
+                }
+
+                    /* Fare satırın üzerine geldiğinde (Hover durumu) */
+                    table.dataTable tbody tr:hover {
+                        background-color: rgba(43, 44, 45, 0.9) !important;
+                        box-shadow: 0 2px 12px rgba(0, 255, 102, 0.15);
+                        transform: scale(1.005);
+                    }
+
+                    /* Tablo hücrelerinin köşelerini yuvarlama */
+                    table.dataTable tbody tr td:first-child {
+                        border-top-left-radius: 6px;
+                        border-bottom-left-radius: 6px;
+                    }
+
+                    table.dataTable tbody tr td:last-child {
+                        border-top-right-radius: 6px;
+                        border-bottom-right-radius: 6px;
+                    }
+
+                /* Tablo Başlık Alanları */
+                table.dataTable thead th {
+                    color: #a1a5b7 !important;
+                    font-weight: 600 !important;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                    border-bottom: 2px solid rgba(255, 255, 255, 0.05) !important;
+                    padding: 12px 10px !important;
+                }
+
+            /* Sayfalama Butonları */
+            .dt-paging-button {
+                background: transparent !important;
+                border: 1px solid transparent !important;
+                color: #b5b5b5 !important;
+                border-radius: 4px !important;
+                padding: 5px 10px !important;
+                margin: 0 2px !important;
+                transition: all 0.2s ease;
+            }
+
+                .dt-paging-button.current {
+                    background: #00ff66 !important; /* Neon yeşil aktif buton */
+                    color: #000000 !important;
+                    font-weight: 700 !important;
+                    box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+                }
+
+                .dt-paging-button:hover:not(.current) {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    color: #ffffff !important;
+                }
+
+            div.dt-container .dt-paging .dt-paging-button.current {
+                color: #000000 !important;
+            }
+
+            /* ==========================================
+                       TÜM DROPDOWN'LAR İÇİN PREMIUM SELECT2 CSS
+                       ========================================== */
+            .select2-container--default .select2-selection--single {
+                background-color: #141516 !important;
+                border: 1px solid #343536 !important;
+                border-radius: 8px !important;
+                height: 40px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                transition: all 0.25s ease;
+                width: 100% !important;
+            }
+
+                /* Seçilen yazının rengi ve kutu içi hizalaması */
+                .select2-container--default .select2-selection--single .select2-selection__rendered {
+                    color: #ffffff !important;
+                    padding-left: 14px !important;
+                    padding-right: 35px !important;
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                /* Standart ok yerine siber ok yerleşimi */
+                .select2-container--default .select2-selection--single .select2-selection__arrow {
+                    height: 38px !important;
+                    right: 12px !important;
+                }
+
+                    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+                        border-color: #a1a5b7 transparent transparent transparent !important;
+                        border-width: 5px 4px 0 4px !important;
+                    }
+
+            /* Tıklanınca (Açılınca) Neon Yeşil Işıma */
+            .select2-container--default.select2-container--open .select2-selection--single {
+                border-color: #00ff66 !important;
+                box-shadow: 0 0 12px rgba(0, 255, 102, 0.35) !important;
+            }
+
+            /* AŞAĞI AÇILAN PANELİN İÇ TASARIMI (İŞTE BURASI ŞIKLAŞTIRDI) */
+            .select2-dropdown {
+                background-color: #141516 !important;
+                border: 1px solid #00ff66 !important; /* Açılan kutunun neon yeşil çerçevesi */
+                border-radius: 8px !important;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important;
+                overflow: hidden;
+                z-index: 99999 !important;
+            }
+
+            /* Açılan listedeki elemanlar */
+            .select2-results__option {
+                padding: 10px 14px !important;
+                color: #b5b5b5 !important;
+                font-size: 13px;
+                background-color: #141516 !important;
+                transition: all 0.15s ease;
+            }
+
+            /* Fareyle listenin üzerine gelindiğindeki yumuşak yeşil parlama (Hover) */
+            .select2-container--default .select2-results__option--highlighted[aria-selected] {
+                background-color: rgba(0, 255, 102, 0.15) !important;
+                color: #00ff66 !important;
+            }
+
+            /* Seçilmiş olan eleman */
+            .select2-container--default .select2-results__option[aria-selected=true] {
+                background-color: #1e1e2d !important;
+                color: #ffffff !important;
+            }
+
+            /* Eski kaba select elementlerini gizle */
+            .dt-length select, #categoryFilter {
+                display: none !important;
+            }
     </style>
 </head>
 <body>
 
     <div class="main-wrapper">
-        
+
+        @await RenderSectionAsync("HeaderSection", required: false)
+
         <div class="dt-demo-panel">
             @RenderBody()
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
     <script src="~/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

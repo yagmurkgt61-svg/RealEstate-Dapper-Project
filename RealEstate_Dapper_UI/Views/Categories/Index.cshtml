@@ -4,9 +4,110 @@
     ViewData["Title"] = "Kategori Listesi";
     Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
 }
-
+@section HeaderSection {
+    <div style="text-align: center; width: 100%; padding: 10px 0;">
+        <h2 class="neon-dynamic-title">
+            Kategoriler Tablosu
+        </h2>
+    </div>
+}
 <style>
+    /* Gelişmiş Koyu Siber Neon Başlık */
+    .neon-dynamic-title {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 44px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 5px 0;
+        line-height: 1.2;
+        text-align: center;
+        /* Yazı rengi derin siber renk geçişi (Yeşil, Turkuaz, Gece Mavisi, Mor) */
+        background: linear-gradient(to right, #00ff66, #00f0ff, #7000ff, #00ff66);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* KATMANLI GÜÇLÜ NEON GÖLGESİ (Yazının arkasındaki o karanlık neon havası) */
+        filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.6)) drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)) drop-shadow(0 0 30px rgba(112, 0, 255, 0.3));
+        /* Animasyon süresini 5 saniyeye düşürerek renk akışını biraz daha belirginleştirdik */
+        animation: darkNeonGlow 5s linear infinite;
+    }
+
+        /* Tablosu Kelimesi İçin Özel Karartılmış Siber Tasarım */
+        .neon-dynamic-title span {
+            font-style: italic;
+            font-weight: 400;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            /* İkinci kelimeyi biraz daha gizemli ve siber mor tonlarına yakın yapar */
+            filter: drop-shadow(0 0 10px #7000ff);
+        }
+
+    /* RAZOR HATASINI ÖNLEYEN ÇİFT @@ İLE RENK VE IŞIK AKIŞI ANİMASYONU */
+    @@keyframes darkNeonGlow {
+        0% {
+            background-position: 0% 50%;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+        }
+
+        50% {
+            background-position: 100% 50%;
+            /* Animasyonun ortasında ışık siber mavi ve mor katmanına kayar */
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)) drop-shadow(0 0 25px rgba(112, 0, 255, 0.5));
+        }
+
+        100% {
+            background-position: 0% 50%;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+        }
+    }
+  
     /* Özelleştirilmiş Koyu Tema Pop-up (Modal) CSS Düzenlemeleri */
+    .neon-btn-success {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 24px;
+        background-color: #0d1f14 !important; /* Çok koyu yeşil/siyah arka plan */
+        color: #fff !important; /* Neon Yeşil Yazı */
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        height: 42px;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: 1px solid #00ff66 !important; /* Neon Sınır Hattı */
+        border-radius: 6px;
+        cursor: pointer;
+        /* Hafif ve asil bir neon parlaması */
+        box-shadow: 0 0 8px rgba(0, 255, 102, 0.2), inset 0 0 8px rgba(0, 255, 102, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Artı (+) İkonunun Kendisine Özel Neon Renklendirme */
+    .neon-plus-icon {
+        font-size: 22px;
+        font-weight: 800;
+        color: #fff;
+        /* Sadece artı işaretinin arkasından vuran ışık efekti */
+        text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6);
+        line-height: 0;
+        margin-bottom: 3px; /* Optik hizalama için */
+    }
+
+    /* Fare Üzerine Geldiğinde (Hover) Neon Patlaması */
+    .neon-btn-success:hover {
+        background-color: #fff !important; /* Arka plan tamamen neon yeşil olur */
+        color: #0b130f !important; /* Yazı koyu siyaha döner ki okunsun */
+        box-shadow: 0 0 20px #00ff66, 0 0 40px rgba(0, 255, 102, 0.4);
+        transform: translateY(-2px); /* Hafif yukarı zıplama efekti */
+    }
+
+        .neon-btn-success:hover .neon-plus-icon {
+            color: #0b130f; /* Hover durumunda artı ikonu da koyu olur */
+            text-shadow: none;
+        }
     .custom-modal {
         display: none; 
         position: fixed; 
@@ -55,10 +156,18 @@
         gap: 15px;
     }
 </style>
-
 <div style="margin-bottom: 20px;">
-    <a href="/Categories/CreateCategories" class="dt-btn dt-btn-success">
-        ➕ Yeni Kategori Ekle
+    <a href="/Categories/CreateCategoriesdb"
+       class="dt-btn"
+       style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 24px; background-color: #141516 !important; color: #ffffff !important; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; height: 42px; box-sizing: border-box; text-decoration: none !important; border: 1px solid rgba(0, 255, 102, 0.3) !important; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+
+        <span style="font-size: 20px; font-weight: 800; color: #00ff66; text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6); line-height: 0; margin-bottom: 2px;">
+            +
+        </span>
+
+        <span style="color: #ffffff !important; text-decoration: none !important;">
+            Yeni Ürün Ekle
+        </span>
     </a>
 </div>
 
@@ -110,6 +219,7 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
+
             $('#categoryTable').DataTable({
                 pageLength: 10,
                 columnDefs: [
@@ -127,6 +237,10 @@
                     }
                 }
             });
+                       $('select').select2({
+            minimumResultsForSearch: -1, // Arama çubuğunu gizler, tertemiz liste sunar
+            width: 'resolve' // Genişlikleri otomatik dengeler
+        });
         });
 
         // Pop-up'ı Açan Fonksiyon

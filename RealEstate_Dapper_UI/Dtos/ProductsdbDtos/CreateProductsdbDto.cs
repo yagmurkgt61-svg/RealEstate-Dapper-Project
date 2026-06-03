@@ -1,4 +1,6 @@
-﻿namespace RealEstate_Dapper_UI.Dtos.ProductsdbDtos
+﻿using System.Text.Json.Serialization;
+
+namespace RealEstate_Dapper_UI.Dtos.ProductsdbDtos
 {
     public class CreateProductsdbDto
     {
@@ -11,5 +13,9 @@
         public decimal Price { get; set; }
 
         public decimal PriceVat { get; set; }
+        public string Image { get; set; }
+        public string Details { get; set; }
+        [JsonIgnore] 
+        public IFormFile ImageFile { get; set; }
     }
 }

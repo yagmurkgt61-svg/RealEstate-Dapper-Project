@@ -13,5 +13,7 @@
         public decimal Price { get; set; }
 
         public decimal PriceVat { get; set; }
+        public string Image { get; set; }
+        public string Details { get; set; }
     }
 }

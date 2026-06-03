@@ -14,5 +14,7 @@
 
         public decimal PriceVat { get; set; }
         public string CategoryName { get; set; }
+        public string Image { get; set; }
+        public string Details { get; set; }
     }
 }

@@ -4,37 +4,111 @@
     ViewData["Title"] = "Ürün Listesi";
     Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
 }
-
+@section HeaderSection {
+    <div style="text-align: center; width: 100%; padding: 10px 0;">
+        <h2 class="neon-dynamic-title">
+            Ürünler Tablosu
+        </h2>
+    </div>
+}
 <style>
-    /* Özelleştirilmiş Koyu Tema Pop-up (Modal) CSS Düzenlemeleri */
-    .custom-modal {
-        display: none; 
-        position: fixed; 
-        z-index: 9999; 
-        padding-top: 150px; 
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        background-color: rgba(0,0,0,0.7); 
-        backdrop-filter: blur(3px);
+    /* Gelişmiş Koyu Siber Neon Başlık */
+    .neon-dynamic-title {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 44px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 5px 0;
+        line-height: 1.2;
+        text-align: center;
+        background: linear-gradient(to right, #00ff66, #00ffff, #7000ff, #00ff66);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.6)) drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)) drop-shadow(0 0 30px rgba(112, 0, 255, 0.3));
+        animation: darkNeonGlow 5s linear infinite;
     }
 
+        .neon-dynamic-title span {
+            font-style: italic;
+            font-weight: 400;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            filter: drop-shadow(0 0 10px #7000ff);
+        }
+
+    @@keyframes darkNeonGlow {
+        0% {
+            background-position: 0% 50%;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+        }
+
+        50% {
+            background-position: 100% 50%;
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)) drop-shadow(0 0 25px rgba(112, 0, 255, 0.5));
+        }
+
+        100% {
+            background-position: 0% 50%;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+        }
+    }
+
+    /* Ortak Modal Dış Kaplama - Ekranda TAM ORTALAMAK İÇİN GÜNCELLENDİ */
+    .custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.75);
+        backdrop-filter: blur(6px);
+        /* Tam dikey ve yatay ortalamayı sağlayan flex yapısı */
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Silme Modalı İçeriği */
     .custom-modal-content {
-        background-color: #1e1e2d; 
+        background-color: #1e1e2d;
         margin: auto;
         padding: 30px;
         border: 1px solid #333;
         width: 400px;
         border-radius: 8px;
         text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        animation: animatetop 0.3s;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+        animation: scaleUp 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
     }
 
-    @@keyframes animatetop {
-        from {top:-300px; opacity:0}
-        to {top:0; opacity:1}
+    /* Siber Detay Modalı İçeriği */
+    .detail-modal-content {
+        background-color: #111214;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #242526;
+        width: 550px;
+        border-radius: 12px;
+        box-shadow: 0 0 30px rgba(0, 255, 102, 0.15);
+        animation: scaleUp 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+        position: relative;
+    }
+
+    @@keyframes scaleUp {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
     }
 
     .modal-title {
@@ -54,12 +128,52 @@
         justify-content: center;
         gap: 15px;
     }
+
+    /* Satırların Üzerine Gelindiğinde Belli Olması İçin İmleç Stili */
+    #productsdbTable tbody tr {
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+        #productsdbTable tbody tr:hover {
+            background-color: rgba(0, 255, 102, 0.03) !important;
+        }
+
+    .clickable-text-effect {
+        color: #00ff66;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    #productsdbTable tbody tr:hover .clickable-text-effect {
+        color: #00ffff;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+    }
 </style>
 
-<div style="margin-bottom: 20px;">
-    <a href="/Productsdb/CreateProductsdb" class="dt-btn dt-btn-success">
-        ➕ Yeni Ürün Ekle
-    </a>
+<div style="margin-bottom: 25px; display: flex; gap: 20px; align-items: flex-end;">
+    <div>
+        <a href="/Productsdb/CreateProductsdb"
+           class="dt-btn"
+           style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 24px; background-color: #141516 !important; color: #ffffff !important; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; height: 42px; box-sizing: border-box; text-decoration: none !important; border: 1px solid rgba(0, 255, 102, 0.3) !important; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+            <span style="font-size: 20px; font-weight: 800; color: #00ff66; text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6); line-height: 0; margin-bottom: 2px;">+</span>
+            <span style="color: #ffffff !important; text-decoration: none !important;">Yeni Ürün Ekle</span>
+        </a>
+    </div>
+
+    <div style="flex-grow: 0; width: 300px;">
+        <label for="categoryFilter" style="color: #a1a5b7; display: block; margin-bottom: 8px; font-size: 13px;">Kategoriye Göre Filtrele</label>
+        <select id="categoryFilter" class="dt-input" style="width: 100%; padding: 10px; background-color: #1e1e2d; border: 1px solid #333; color: #fff; border-radius: 4px; cursor: pointer;">
+            <option value="">-- Tüm Kategoriler --</option>
+            @if (ViewBag.CategoryList != null)
+            {
+                foreach (var cat in ViewBag.CategoryList as List<RealEstate_Dapper_UI.Dtos.CategoriesdbDtos.ResultCategoriesdbDto>)
+                {
+                    <option value="@cat.CategoryName">@cat.CategoryName</option>
+                }
+            }
+        </select>
+    </div>
 </div>
 
 <table id="productsdbTable" class="display dark" style="width:100%">
@@ -78,27 +192,87 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr data-id="@item.ProductID"
+                data-name="@item.ProductName"
+                data-category="@item.CategoryName"
+                data-stock="@item.UnitInStock"
+                data-price="@item.Price.ToString("N2") ₺"
+                data-vat="@item.PriceVat.ToString("N2") ₺"
+                data-image="@(string.IsNullOrEmpty(item.Image) ? "/images/no-image.png" : item.Image)"
+                data-details="@item.Details">
+
                 <td>@item.ProductID</td>
-                <td>@item.ProductName</td>
+                <td><span class="clickable-text-effect">@item.ProductName</span></td>
                 <td>@item.CategoryName</td>
                 <td>@item.UnitInStock</td>
                 <td>@item.Price.ToString("N2") ₺</td>
                 <td>@item.PriceVat.ToString("N2") ₺</td>
-                <td style="text-align: center;">
-                    <button type="button" class="dt-btn dt-btn-danger" onclick="openDeleteModal(@item.ProductID, '@item.ProductName')">
-                        Sil
-                    </button>
+
+                <td style="text-align: center;" class="action-cell">
+                    <button type="button" class="dt-btn dt-btn-danger" onclick="openDeleteModal(@item.ProductID, '@item.ProductName')">Sil</button>
                 </td>
-                <td style="text-align: center;">
-                    <a href="/Productsdb/UpdateProductsdb?id=@item.ProductID" class="dt-btn dt-btn-warning">
-                        Güncelle
-                    </a>
+                <td style="text-align: center;" class="action-cell">
+                    <a href="/Productsdb/UpdateProductsdb?id=@item.ProductID" class="dt-btn dt-btn-warning">Güncelle</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div id="detailModal" class="custom-modal">
+    <div class="detail-modal-content">
+        <div style="background: #16181b; padding: 20px; border-bottom: 1px solid #242526; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #fff; margin: 0; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <span style="color: #00ff66;">ℹ</span> Ürün Detay Bilgisi
+            </h3>
+            <span onclick="closeDetailModal()" style="color: #a1a5b7; font-size: 24px; cursor: pointer; font-weight: bold; line-height: 1; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#a1a5b7'">&times;</span>
+        </div>
+
+        <div style="padding: 25px; display: flex; gap: 25px;">
+            <div style="width: 180px; height: 180px; background: #0c0d0e; border: 1px solid #242526; border-radius: 10px; padding: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <img id="popImage" src="#" alt="Ürün Görseli" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" />
+            </div>
+
+            <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; font-family: sans-serif;">
+                <div>
+                    <span style="color: #565674; font-size: 12px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 2px;">Ürün Adı</span>
+                    <span id="popName" style="color: #fff; font-size: 16px; font-weight: 600;">-</span>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <span style="color: #565674; font-size: 12px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 2px;">Kategori</span>
+                        <span id="popCategory" style="color: #00ffff; font-size: 14px; font-weight: 500;">-</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <span style="color: #565674; font-size: 12px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 2px;">Stok Durumu</span>
+                        <span id="popStock" style="color: #fff; font-size: 14px; font-weight: 600;">-</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; background: #16181b; padding: 10px; border-radius: 8px; border: 1px solid #1c1d21;">
+                    <div style="flex: 1;">
+                        <span style="color: #a1a5b7; font-size: 11px; display: block; margin-bottom: 2px;">Net Fiyat (KDV Hariç)</span>
+                        <span id="popPrice" style="color: #fff; font-size: 14px; font-weight: bold;">-</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <span style="color: #00ff66; font-size: 11px; display: block; margin-bottom: 2px;">KDV Dahil Satış</span>
+                        <span id="popVat" style="color: #00ff66; font-size: 14px; font-weight: bold;">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #141517; padding: 20px 25px; border-top: 1px solid #1c1d21;">
+            <span style="color: #565674; font-size: 12px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 6px;">Ürün Özellikleri / Detaylı Açıklama</span>
+            <div id="popDetails" style="color: #cfd1da; font-size: 13px; line-height: 1.6; max-height: 120px; overflow-y: auto; padding-right: 5px; white-space: pre-line;">-</div>
+        </div>
+
+        <div style="padding: 15px 25px; background: #16181b; display: flex; justify-content: flex-end; border-top: 1px solid #242526;">
+            <button type="button" class="dt-btn" style="background-color: #242526; color: #fff; padding: 8px 20px; font-size: 13px; border: 1px solid #343536;" onclick="closeDetailModal()">Kapat</button>
+        </div>
+    </div>
+</div>
 
 <div id="deleteModal" class="custom-modal">
     <div class="custom-modal-content">
@@ -114,9 +288,8 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#productsdbTable').DataTable({
+            var table = $('#productsdbTable').DataTable({
                 pageLength: 10,
-                // ÇÖZÜM: Sütun sayısı arttığı için Sil ve Güncelle butonları 6 ve 7 oldu
                 columnDefs: [
                     { orderable: false, targets: [6, 7] }
                 ],
@@ -132,24 +305,71 @@
                     }
                 }
             });
+
+            $('select').select2({
+                minimumResultsForSearch: -1,
+                width: 'resolve'
+            });
+
+            $('#categoryFilter').on('change', function () {
+                var selectedCategory = this.value;
+                table.column(2).search(selectedCategory).draw();
+            });
+
+            $('body').on('click', '#productsdbTable tbody tr', function (e) {
+                if ($(e.target).closest('.action-cell').length > 0) {
+                    return;
+                }
+
+                var name = $(this).data('name');
+                var category = $(this).data('category');
+                var stock = $(this).data('stock');
+                var price = $(this).data('price');
+                var vat = $(this).data('vat');
+                var image = $(this).data('image');
+                var details = $(this).data('details');
+
+                $('#popName').text(name);
+                $('#popCategory').text(category);
+                $('#popStock').text(stock + " Adet");
+                $('#popPrice').text(price);
+                $('#popVat').text(vat);
+                $('#popImage').attr('src', image);
+
+                if(details && details.trim() !== "") {
+                    $('#popDetails').text(details);
+                } else {
+                    $('#popDetails').html('<span style="color:#565674; font-style:italic;">Bu ürüne ait detaylı açıklama girilmemiştir.</span>');
+                }
+
+                $('#detailModal').css('display', 'flex').hide().fadeIn(200);
+            });
         });
 
+        function closeDetailModal() {
+            $('#detailModal').fadeOut(150);
+        }
+
         function openDeleteModal(id, productName) {
-            // ÇÖZÜM: Element ID'si modalProductName olarak senkronize edildi
             document.getElementById("modalProductName").innerText = productName;
-            
             document.getElementById("confirmDeleteBtn").href = "/Productsdb/DeleteProductsdb?id=" + id;
-            document.getElementById("deleteModal").style.display = "block";
+            // DÜZELTİLDİ: Silme modalı da artık dikeyde tam ortalanmış flex olarak açılıyor
+            $('#deleteModal').css('display', 'flex').hide().fadeIn(150);
         }
 
         function closeDeleteModal() {
-            document.getElementById("deleteModal").style.display = "none";
+            $('#deleteModal').fadeOut(150);
         }
 
         window.onclick = function(event) {
-            var modal = document.getElementById("deleteModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
+            var deleteModal = document.getElementById("deleteModal");
+            var detailModal = document.getElementById("detailModal");
+
+            if (event.target == deleteModal) {
+                closeDeleteModal();
+            }
+            if (event.target == detailModal) {
+                closeDetailModal();
             }
         }
     </script>
