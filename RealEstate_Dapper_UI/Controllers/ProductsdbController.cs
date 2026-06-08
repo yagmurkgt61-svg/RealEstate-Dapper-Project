@@ -181,13 +181,11 @@ namespace RealEstate_Dapper_UI.Controllers
                 }
             }
 
-            // 2. API Güncelleme Çağrısı (PUT veya POST API mimarine göre düzenle - Genelde PutAsync kullanılır)
             var client = _httpClientFactory.CreateClient("RealEstateClient");
             var jsonData = JsonConvert.SerializeObject(updateProductsdbDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            // NOT: Senin API güncellemeyi PUT olarak bekliyorsa PutAsync, POST bekliyorsa PostAsync yap kanka.
-            var responseMessage = await client.PostAsync("/api/Productsdb", stringContent);
+            var responseMessage = await client.PutAsync("/api/Productsdb/UpdateProductsdb", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
