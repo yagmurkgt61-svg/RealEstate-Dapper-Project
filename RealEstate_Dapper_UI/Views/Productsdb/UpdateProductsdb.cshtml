@@ -7,7 +7,7 @@
 
 <h2 style="margin-top: 0; margin-bottom: 25px; color: #ffffff;">🔄 Ürün Güncelle</h2>
 
-<form asp-controller="Productsdb" asp-action="UpdateProductsdb" method="post" enctype="multipart/form-data">
+<form action="/Productsdb/UpdateProductsdb" method="post">
     <input type="hidden" name="ProductID" value="@Model?.ProductID" />
 
     <div class="dt-form-group" style="margin-bottom: 20px;">
