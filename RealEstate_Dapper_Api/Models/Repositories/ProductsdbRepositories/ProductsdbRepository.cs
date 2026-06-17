@@ -32,7 +32,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.ProductsdbRepositories
         public async Task<List<ResultProductsdbDto>> GetAllProductsdbAsync()
         {
             // tabloda bulunan tüm kayıtları listeleyen sorgu
-            string query = "select P.ProductID,P.ProductName,P.CategoryID,C.CategoryName,P.UnitInStock,P.Price,P.PriceVat,P.Image,P.Details from Productsdb P inner join Categoriesdb C on P.CategoryID = C.CategoryID";
+            string query = "select P.ProductID, P.ProductName, P.CategoryID, C.CategoryName, P.UnitInStock, P.Price, P.PriceVat, P.Image, P.Details from Productsdb P inner join Categoriesdb C on P.CategoryID = C.CategoryID where C.IsActive = 1";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductsdbDto>(query);

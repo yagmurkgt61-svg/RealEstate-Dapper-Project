@@ -5,6 +5,19 @@
     Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
 }
 
+<style>
+    /* Sayfa genelinde kaçak alt çizgileri ve hover durumlarını engeller */
+    .dt-btn, a.dt-btn, button {
+        text-decoration: none !important;
+    }
+
+        a.dt-btn:hover, a.dt-btn:focus {
+            text-decoration: none !important;
+            opacity: 0.85; /* Üzerine gelince şık bir sönme efekti */
+            transition: all 0.2s ease;
+        }
+</style>
+
 <h2 style="margin-top: 0; margin-bottom: 25px; color: #ffffff;">Kategori Güncelle</h2>
 
 <form action="/Categories/UpdateCategories" method="post">
@@ -40,11 +53,11 @@
     </div>
 
     <div style="margin-top: 30px; display: flex; gap: 10px;">
-        <button type="submit" class="dt-btn dt-btn-warning" style="font-size: 14px; padding: 10px 20px;">
+        <button type="submit" class="dt-btn dt-btn-warning" style="font-size: 14px; padding: 10px 20px; text-decoration: none !important;">
             🔄 Değişiklikleri Kaydet
         </button>
-        
-        <a href="/Categories/Index" class="dt-btn" style="background-color: #444; color: #fff; font-size: 14px; padding: 10px 20px;">
+
+        <a href="/Categories/Index" class="dt-btn" style="background-color: #444; color: #fff; font-size: 14px; padding: 10px 20px; text-decoration: none !important;">
             ❌ İptal Et / Listeye Dön
         </a>
     </div>

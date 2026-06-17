@@ -44,7 +44,10 @@
     </div>
 
     <div class="dt-form-group" style="margin-bottom: 20px;">
-        <label for="PriceVat" style="color: #a1a5b7; display: block; margin-bottom: 8px;">KDV Dahil Fiyatı</label>
+        <label for="PriceVat" style="color: #a1a5b7; display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span>KDV Dahil Fiyatı</span>
+            <span style="font-size: 11px; color: #f1416c;">* Fiyata göre otomatik hesaplanır</span>
+        </label>
         <input type="number"
                id="PriceVat"
                name="PriceVat"
@@ -52,7 +55,8 @@
                placeholder="0.00"
                step="0.01"
                min="0"
-               style="width: 100%; padding: 10px; background-color: #141516; border: 1px solid #343536; color: #fff; border-radius: 8px;"
+               readonly
+               style="width: 100%; padding: 10px; background-color: #1c1d1e; border: 1px solid #343536; color: #888; border-radius: 8px; cursor: not-allowed;"
                required />
     </div>
 
@@ -118,6 +122,17 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
+            // KDV Otomatik Hesaplama Sistemi (%20)
+            $('#Price').on('input', function () {
+                var price = parseFloat($(this).val());
+                if (!isNaN(price)) {
+                    var priceVat = price * 1.20;
+                    $('#PriceVat').val(priceVat.toFixed(2));
+                } else {
+                    $('#PriceVat').val('');
+                }
+            });
+
             $('#CategoryID').select2({
                 minimumResultsForSearch: -1,
                 width: '100%'

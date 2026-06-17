@@ -4,14 +4,34 @@
     ViewData["Title"] = "Kategori Listesi";
     Layout = "~/Views/Shared/_DataTablesLayout.cshtml";
 }
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 @section HeaderSection {
-    <div style="text-align: center; width: 100%; padding: 10px 0;">
-        <h2 class="neon-dynamic-title">
+    <div class="logo-wrapper">
+        <h1 class="category-logo">
             Kategoriler Tablosu
-        </h2>
+        </h1>
     </div>
 }
+
 <style>
+    .logo-wrapper {
+        text-align: center;
+        margin: 15px 0 25px;
+    }
+
+    .category-logo {
+        margin: 0;
+        font-family: 'Lobster', cursive;
+        font-size: 72px;
+        font-weight: 400;
+        color: #f8f9fa;
+        text-shadow: 0 2px 8px rgba(0,0,0,.25);
+        letter-spacing: 1px;
+    }
+
+
+
+
     /* Gelişmiş Koyu Siber Neon Başlık */
     .neon-dynamic-title {
         font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -22,28 +42,14 @@
         margin: 5px 0;
         line-height: 1.2;
         text-align: center;
-        /* Yazı rengi derin siber renk geçişi (Yeşil, Turkuaz, Gece Mavisi, Mor) */
         background: linear-gradient(to right, #00ff66, #00f0ff, #7000ff, #00ff66);
         background-size: 300% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        /* KATMANLI GÜÇLÜ NEON GÖLGESİ (Yazının arkasındaki o karanlık neon havası) */
         filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.6)) drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)) drop-shadow(0 0 30px rgba(112, 0, 255, 0.3));
-        /* Animasyon süresini 5 saniyeye düşürerek renk akışını biraz daha belirginleştirdik */
         animation: darkNeonGlow 5s linear infinite;
     }
 
-        /* Tablosu Kelimesi İçin Özel Karartılmış Siber Tasarım */
-        .neon-dynamic-title span {
-            font-style: italic;
-            font-weight: 400;
-            text-transform: lowercase;
-            letter-spacing: 1px;
-            /* İkinci kelimeyi biraz daha gizemli ve siber mor tonlarına yakın yapar */
-            filter: drop-shadow(0 0 10px #7000ff);
-        }
-
-    /* RAZOR HATASINI ÖNLEYEN ÇİFT @@ İLE RENK VE IŞIK AKIŞI ANİMASYONU */
     @@keyframes darkNeonGlow {
         0% {
             background-position: 0% 50%;
@@ -52,7 +58,6 @@
 
         50% {
             background-position: 100% 50%;
-            /* Animasyonun ortasında ışık siber mavi ve mor katmanına kayar */
             filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)) drop-shadow(0 0 25px rgba(112, 0, 255, 0.5));
         }
 
@@ -61,68 +66,20 @@
             filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
         }
     }
-  
-    /* Özelleştirilmiş Koyu Tema Pop-up (Modal) CSS Düzenlemeleri */
-    .neon-btn-success {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 24px;
-        background-color: #0d1f14 !important; /* Çok koyu yeşil/siyah arka plan */
-        color: #fff !important; /* Neon Yeşil Yazı */
-        font-weight: 600;
-        font-size: 14px;
-        letter-spacing: 0.5px;
-        height: 42px;
-        box-sizing: border-box;
-        text-decoration: none;
-        border: 1px solid #00ff66 !important; /* Neon Sınır Hattı */
-        border-radius: 6px;
-        cursor: pointer;
-        /* Hafif ve asil bir neon parlaması */
-        box-shadow: 0 0 8px rgba(0, 255, 102, 0.2), inset 0 0 8px rgba(0, 255, 102, 0.1);
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
 
-    /* Artı (+) İkonunun Kendisine Özel Neon Renklendirme */
-    .neon-plus-icon {
-        font-size: 22px;
-        font-weight: 800;
-        color: #fff;
-        /* Sadece artı işaretinin arkasından vuran ışık efekti */
-        text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6);
-        line-height: 0;
-        margin-bottom: 3px; /* Optik hizalama için */
-    }
-
-    /* Fare Üzerine Geldiğinde (Hover) Neon Patlaması */
-    .neon-btn-success:hover {
-        background-color: #fff !important; /* Arka plan tamamen neon yeşil olur */
-        color: #0b130f !important; /* Yazı koyu siyaha döner ki okunsun */
-        box-shadow: 0 0 20px #00ff66, 0 0 40px rgba(0, 255, 102, 0.4);
-        transform: translateY(-2px); /* Hafif yukarı zıplama efekti */
-    }
-
-        .neon-btn-success:hover .neon-plus-icon {
-            color: #0b130f; /* Hover durumunda artı ikonu da koyu olur */
-            text-shadow: none;
-        }
     .custom-modal {
-        display: none; 
-        position: fixed; 
-        z-index: 9999; 
-        padding-top: 150px; 
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        background-color: rgba(0,0,0,0.7); 
-        backdrop-filter: blur(3px); /* Arka planı hafifçe bulandırır */
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: rgba(0,0,0,0.7);
+        backdrop-filter: blur(3px);
+        justify-content: center;
+        align-items: center;
     }
 
     .custom-modal-content {
-        background-color: #1e1e2d; /* Projenizin koyu temasıyla uyumlu renk */
+        background-color: #1e1e2d;
         margin: auto;
         padding: 30px;
         border: 1px solid #333;
@@ -134,8 +91,15 @@
     }
 
     @@keyframes animatetop {
-        from {top:-300px; opacity:0}
-        to {top:0; opacity:1}
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
     }
 
     .modal-title {
@@ -155,19 +119,95 @@
         justify-content: center;
         gap: 15px;
     }
+
+    .dataTables_wrapper > .dataTables_filter,
+    .dataTables_wrapper > .dataTables_length {
+        display: none !important;
+    }
+
+    .custom-table-search {
+        width: 880px;
+        height: 43px;
+        background-color: #1b1c28 !important;
+        color: #a1a5b7 !important;
+        border: 1px solid #323347 !important;
+        border-radius: 6px;
+        padding: 0 15px;
+        font-size: 14px;
+        box-sizing: border-box;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+        .custom-table-search:focus {
+            border-color: #00ff66 !important;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
+        }
+
+
+    .dt-footer-wrapper {
+        position: relative !important; 
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-top: 25px !important;
+        padding: 15px 5px 5px 5px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        border-top: 1px solid #232433 !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_info {
+        color: #a1a5b7 !important;
+        font-size: 13px !important;
+        padding-top: 0 !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_paginate {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important; 
+        margin: 0 !important;
+        z-index: 5 !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length {
+        margin-left: auto !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+        div.dataTables_wrapper div.dataTables_length label {
+            display: inline-flex !important;
+            flex-direction: row !important; 
+            align-items: center !important;
+            gap: 10px !important;
+            color: #a1a5b7 !important;
+            font-size: 13px !important;
+            margin: 0 !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_length .select2-container {
+            width: 85px !important;
+        }
+
+    .dt-btn, .dt-btn-warning, .dt-btn-danger, a.dt-btn {
+        text-decoration: none !important;
+    }
 </style>
-<div style="margin-bottom: 20px;">
-    <a href="/Categories/CreateCategoriesdb"
+
+<div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div>
+        <input type="text" id="myCustomSearch" class="custom-table-search" placeholder="Tabloda arayın..." autocomplete="off">
+    </div>
+
+    <a href="/Categories/CreateCategories"
        class="dt-btn"
-       style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 24px; background-color: #141516 !important; color: #ffffff !important; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; height: 42px; box-sizing: border-box; text-decoration: none !important; border: 1px solid rgba(0, 255, 102, 0.3) !important; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;">
-
-        <span style="font-size: 20px; font-weight: 800; color: #00ff66; text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6); line-height: 0; margin-bottom: 2px;">
-            +
-        </span>
-
-        <span style="color: #ffffff !important; text-decoration: none !important;">
-            Yeni Ürün Ekle
-        </span>
+       style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 24px; background-color: #141516 !important; color: #ffffff !important; width:250px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; height: 42px; box-sizing: border-box; text-decoration: none !important; border: 1px solid rgba(0, 255, 102, 0.3) !important; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+        <span style="font-size: 20px; font-weight: 800; color: #00ff66; text-shadow: 0 0 8px #00ff66, 0 0 15px rgba(0, 255, 102, 0.6); line-height: 0; margin-bottom: 2px;">+</span>
+        <span style="color: #ffffff !important; text-decoration: none !important;">Yeni Kategori Ekle</span>
     </a>
 </div>
 
@@ -178,8 +218,8 @@
             <th>Kategori Adı</th>
             <th>Aktif Mi?</th>
             <th>Sıra</th>
-            <th style="text-align: center; width: 80px;">Sil</th>
             <th style="text-align: center; width: 100px;">Güncelle</th>
+            <th style="text-align: center; width: 80px;">Sil</th>
         </tr>
     </thead>
     <tbody>
@@ -191,14 +231,10 @@
                 <td>@(item.IsActive ? "Aktif" : "Pasif")</td>
                 <td>@item.Order</td>
                 <td style="text-align: center;">
-                    <button type="button" class="dt-btn dt-btn-danger" onclick="openDeleteModal(@item.CategoryID, '@item.CategoryName')">
-                        Sil
-                    </button>
+                    <a href="/Categories/UpdateCategories?id=@item.CategoryID" class="dt-btn dt-btn-warning">Güncelle</a>
                 </td>
                 <td style="text-align: center;">
-                    <a href="/Categories/UpdateCategories?id=@item.CategoryID" class="dt-btn dt-btn-warning">
-                        Güncelle
-                    </a>
+                    <button type="button" class="dt-btn dt-btn-danger" onclick="openDeleteModal(@item.CategoryID, '@item.CategoryName')">Sil</button>
                 </td>
             </tr>
         }
@@ -219,15 +255,15 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-
-            $('#categoryTable').DataTable({
+            var table = $('#categoryTable').DataTable({
+                destroy: true,
                 pageLength: 10,
+                dom: 'rt<"dt-footer-wrapper"ipl>', 
                 columnDefs: [
                     { orderable: false, targets: [4, 5] }
                 ],
                 language: {
-                    search: "Aramak:",
-                    lengthMenu: "_MENU_ &nbsp;sayfa başına girişler",
+                    lengthMenu: "Göster: _MENU_",
                     info: "_START_ / _TOTAL_ giriş",
                     infoEmpty: "Kayıt yok",
                     zeroRecords: "Eşleşen kayıt bulunamadı",
@@ -237,30 +273,36 @@
                     }
                 }
             });
-                       $('select').select2({
-            minimumResultsForSearch: -1, // Arama çubuğunu gizler, tertemiz liste sunar
-            width: 'resolve' // Genişlikleri otomatik dengeler
-        });
-        });
 
-        // Pop-up'ı Açan Fonksiyon
+            $('select').each(function() {
+                $(this).select2({
+                    minimumResultsForSearch: -1,
+                    width: '100%',
+                    dropdownParent: $(this).parent()
+                });
+            });
+
+            $('#myCustomSearch').on('keyup input', function () {
+                var value = this.value;
+                if (value.length >= 3) {
+                    table.search(value).draw();
+                } else if (value.length === 0 || table.search() !== '') {
+                    table.search('').draw();
+                }
+            });
+        });
         function openDeleteModal(id, categoryName) {
-            // Silinecek kategorinin adını pop-up içine yazdırıyoruz
             document.getElementById("modalCategoryName").innerText = categoryName;
-            
-            // "Evet, Sil" butonunun href linkini dinamik olarak o ID'ye yönlendiriyoruz
-            document.getElementById("confirmDeleteBtn").href = "/Categories/DeleteCategories?id=" + id;
-            
-            // Pop-up'ı görünür yapıyoruz
-            document.getElementById("deleteModal").style.display = "block";
+            document.getElementById("confirmDeleteBtn").href =
+                "/Categories/DeleteCategories?id=" + id;
+
+            document.getElementById("deleteModal").style.display = "flex";
         }
 
-        // Pop-up'ı Kapatan Fonksiyon
-        function closeDeleteModal() {
+               function closeDeleteModal() {
             document.getElementById("deleteModal").style.display = "none";
         }
 
-        // Kullanıcı pop-up dışındaki boş bir yere basarsa da pop-up kapansın
         window.onclick = function(event) {
             var modal = document.getElementById("deleteModal");
             if (event.target == modal) {

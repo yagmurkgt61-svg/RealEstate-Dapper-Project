@@ -18,13 +18,9 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient("RealEstateClient");
-
             var response = await client.GetAsync("api/Categoriesdb");
-
             var jsonData = await response.Content.ReadAsStringAsync();
-
             var values = JsonConvert.DeserializeObject<List<ResultCategoriesdbDto>>(jsonData);
-
             return View(values);
         }
         [HttpGet]

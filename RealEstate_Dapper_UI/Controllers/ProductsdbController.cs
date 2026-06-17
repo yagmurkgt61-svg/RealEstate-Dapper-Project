@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.CategoriesdbDtos;
 using RealEstate_Dapper_UI.Dtos.ProductsdbDtos;
+using System.Globalization;
 using System.Text;
 
 namespace RealEstate_Dapper_UI.Controllers
@@ -18,8 +19,6 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient("RealEstateClient");
-
-            // 1. Önce Dropdown için tüm kategorileri API'den çekiyoruz
             var categoryResponse = await client.GetAsync("/api/Categoriesdb");
             if (categoryResponse.IsSuccessStatusCode)
             {
@@ -27,8 +26,6 @@ namespace RealEstate_Dapper_UI.Controllers
                 var categoryList = JsonConvert.DeserializeObject<List<RealEstate_Dapper_UI.Dtos.CategoriesdbDtos.ResultCategoriesdbDto>>(categoryData);
                 ViewBag.CategoryList = categoryList;
             }
-
-            // 2. Ardından mevcut ürün listesini çekiyoruz
             var responseMessage = await client.GetAsync("/api/Productsdb");
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -36,7 +33,6 @@ namespace RealEstate_Dapper_UI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultProductsdbDto>>(jsonData);
                 return View(values);
             }
-
             return View(new List<ResultProductsdbDto>());
         }
         [HttpGet]
@@ -64,33 +60,34 @@ namespace RealEstate_Dapper_UI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProductsdb([FromForm] CreateProductsdbDto createProductsdbDto)
         {
-            // 1. Resim Dosyası Seçilmiş mi Kontrol Et ve Klasöre Kaydet
+            SetProductPricesFromForm(createProductsdbDto);
+            // kullanıcı resim için dosya seçmiş mi kontrol et
             if (createProductsdbDto.ImageFile != null && createProductsdbDto.ImageFile.Length > 0)
             {
+                // Dosya yükleme işlemi için gerekli yolları ve dosya adını oluştur
                 var resourcePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/products");
-
+                // Eğer klasör yoksa oluştur
                 if (!Directory.Exists(resourcePath))
                 {
                     Directory.CreateDirectory(resourcePath);
                 }
-
+                // Dosya adlarının çakışmaması için benzersiz bir dosya adı oluştur
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(createProductsdbDto.ImageFile.FileName);
+                // Dosyayı belirtilen yola kaydet
                 var filePath = Path.Combine(resourcePath, fileName);
-
+                // Dosyayı kaydetme işlemi
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await createProductsdbDto.ImageFile.CopyToAsync(stream);
                 }
-
-                // DTO'ndaki alan adına (Image) uygun şekilde atama yapılıyor
+                // dto içine resmin yolunu yazar
                 createProductsdbDto.Image = "/images/products/" + fileName;
             }
             else
             {
+                // resim seçilmemişse varsayılan resim ataması yap
                 createProductsdbDto.Image = "/images/no-image.png";
             }
-
-            // 2. Hazırlanan DTO'yu API'ye JSON Olarak Gönder
             var client = _httpClientFactory.CreateClient("RealEstateClient");
             var jsonData = JsonConvert.SerializeObject(createProductsdbDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -149,7 +146,8 @@ namespace RealEstate_Dapper_UI.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateProductsdb([FromForm] UpdateProductsdbDto updateProductsdbDto)
         {
-            // 1. Kullanıcı yeni bir dosya yüklemiş mi kontrol et
+            SetProductPricesFromForm(updateProductsdbDto);
+
             if (updateProductsdbDto.ImageFile != null && updateProductsdbDto.ImageFile.Length > 0)
             {
                 var resourcePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/products");
@@ -167,14 +165,11 @@ namespace RealEstate_Dapper_UI.Controllers
                     await updateProductsdbDto.ImageFile.CopyToAsync(stream);
                 }
 
-                // Yeni resim seçildiği için yeni yolu atıyoruz
                 updateProductsdbDto.Image = "/images/products/" + fileName;
             }
             else
             {
-                // Yeni resim SEÇİLMEDİYSE, formdaki gizli inputtan gelen mevcut (eski) resmi aynen koru
-                // Böylece veritabanındaki eski resim linki null veya ezilmiş olmaz.
-                // (Eğer hidden inputtan veri gelmiyorsa boş kalmasın diye varsayılan atayabilirsin)
+    
                 if (string.IsNullOrEmpty(updateProductsdbDto.Image))
                 {
                     updateProductsdbDto.Image = "/images/no-image.png";
@@ -193,6 +188,48 @@ namespace RealEstate_Dapper_UI.Controllers
             }
 
             return View(updateProductsdbDto);
+        }
+
+        private void SetProductPricesFromForm(CreateProductsdbDto productDto)
+        {
+            if (TryReadDecimalFromForm("Price", out var price))
+            {
+                productDto.Price = price;
+            }
+
+            if (TryReadDecimalFromForm("PriceVat", out var priceVat))
+            {
+                productDto.PriceVat = priceVat;
+            }
+        }
+
+        private void SetProductPricesFromForm(UpdateProductsdbDto productDto)
+        {
+            if (TryReadDecimalFromForm("Price", out var price))
+            {
+                productDto.Price = price;
+            }
+
+            if (TryReadDecimalFromForm("PriceVat", out var priceVat))
+            {
+                productDto.PriceVat = priceVat;
+            }
+        }
+
+        private bool TryReadDecimalFromForm(string key, out decimal value)
+        {
+            value = 0;
+
+            if (!Request.Form.TryGetValue(key, out var formValue))
+            {
+                return false;
+            }
+
+            return decimal.TryParse(
+                formValue.ToString(),
+                NumberStyles.Number,
+                CultureInfo.InvariantCulture,
+                out value);
         }
     }
 }

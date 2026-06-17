@@ -1,6 +1,8 @@
 # Build klasörleri
 bin/
 obj/
+build-obj/
+build-output/
 
 # Visual Studio
 .vs/

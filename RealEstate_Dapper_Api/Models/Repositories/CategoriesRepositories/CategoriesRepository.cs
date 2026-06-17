@@ -75,5 +75,16 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoriesRepositories
                 await connection.ExecuteAsync(query, parameters);
             }
         }
+        public async Task<List<ResultCategoriesdbDto>> GetActiveCategoriesAsync()
+        {
+            // Sadece aktif (IsActive = 1) olan kategorileri çeken sorgu
+            string query = "Select * From Categoriesdb Where IsActive = 1";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultCategoriesdbDto>(query);
+                return values.ToList();
+            }
+        }
     }
 }

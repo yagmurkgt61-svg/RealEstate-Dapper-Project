@@ -10,6 +10,7 @@ namespace RealEstate_Dapper_Api.Models.Repositories.CategoriesRepositories
         Task UpdateCategoriesdb(UpdateCategoriesdbDto updateCategoriesdbDto);
         Task<GetByIdCategoriesDto> GetCategoriesdbByCategoryId(int id);
         Task DeleteCategoriesdb(int id);
+        Task<List<ResultCategoriesdbDto>> GetActiveCategoriesAsync();
 
     }
 }

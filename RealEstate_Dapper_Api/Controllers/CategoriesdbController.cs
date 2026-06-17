@@ -48,6 +48,11 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _categoriesRepository.GetCategoriesdbByCategoryId(id);
             return Ok(values);
         }
-
+        [HttpGet("GetActiveCategories")]
+        public async Task<IActionResult> GetActiveCategories()
+        {
+            var values = await _categoriesRepository.GetActiveCategoriesAsync();
+            return Ok(values);
+        }
     }
 }
